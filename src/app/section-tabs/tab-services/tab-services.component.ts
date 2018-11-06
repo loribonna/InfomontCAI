@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TabItemBase } from '../tab.base';
-import { TabsService } from 'src/core/tabs-base/tabs.service';
 import { CacheService } from 'src/app/cache.service';
 import { ActivatedRoute } from '@angular/router';
 import { ShelterService } from 'src/app/shelter/shelter.service';

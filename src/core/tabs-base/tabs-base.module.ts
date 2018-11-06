@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TabsBaseComponent } from './tabs-base.component';
 import { TabItemModule } from './tabItem/tabItem.module';
+import { TabItemService } from './tabItem/tabItem.component';
 @NgModule({
     imports: [TabItemModule],
     declarations: [
@@ -10,6 +11,6 @@ import { TabItemModule } from './tabItem/tabItem.module';
         TabsBaseComponent,
         TabItemModule
     ],
-    providers: []
+    providers: [TabItemService]
 })
 export class TabsBaseModule { }
