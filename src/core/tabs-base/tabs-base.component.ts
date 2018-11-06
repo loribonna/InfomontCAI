@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ContentChildren, OnDestroy, AfterViewInit, AfterContentChecked, AfterViewChecked } from '@angular/core';
+import { TabItemComponent, TabItemService } from './tabItem/tabItem.component';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 export interface ITab {
   name: string;
@@ -12,17 +15,33 @@ export interface ITab {
 @Component({
   selector: 'app-tabs-base',
   host: {
-    'role': 'tabs-base',
-    '[class.tabs-base]': 'true'
+    'role': 'tabs-base'
   },
   templateUrl: './tabs-base.component.html',
   styleUrls: ['./tabs-base.component.scss']
 })
-export class TabsBaseComponent implements OnInit {
+export class TabsBaseComponent implements OnInit, OnDestroy {
+  _selectedItemID: number;
+  tabSub: Subscription;
+  @ContentChildren(TabItemComponent, { descendants: true }) _tabs: QueryList<TabItemComponent>;
 
-  constructor() { }
+  constructor(private tabsService: TabItemService, private route: ActivatedRoute) {
+
+  }
 
   ngOnInit() {
+    this.tabSub = this.tabsService.selection$.subscribe(tabID => {
+      this._selectedItemID = tabID;
+      this._tabs.forEach(tab => {
+        tab.active = tab._itemID === tabID;
+      });
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.tabSub) {
+      this.tabSub.unsubscribe();
+    }
   }
 
 }

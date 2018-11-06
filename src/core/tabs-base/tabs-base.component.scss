@@ -1,3 +1,26 @@
-.tabs-base {
-    
+@import './tabItem/tabItem.component.scss';
+@import '../style/typography.scss';
+
+@mixin tabs-base($theme) {
+    .tabs-base {
+        $background: map-get($theme, background);
+        $foreground: map-get($theme, foreground);
+        $accent: map-get($theme, accent);
+
+        margin-left: 2%;
+        margin-right: 2%;
+
+        &-header {
+            display: inline-flex
+        }
+
+        &-content {
+            border: 1px solid bc-color($foreground, divider);
+        }
+        
+        color: bc-color($foreground, 'text');
+        background: bc-color($background, 'background');
+    } 
+
+    @include tab-item($theme);
 }

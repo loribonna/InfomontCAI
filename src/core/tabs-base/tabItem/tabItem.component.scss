@@ -1,0 +1,21 @@
+
+@mixin tab-item($theme) {
+    .tab-item-header {
+        $foreground: map-get($theme, foreground);
+
+        font-size:20px;
+        padding-right: 2%;
+        border: 1px solid bc-color($foreground, divider);
+        border-bottom: none;
+        border-radius: 2px;
+        
+        &:hover{
+            color: bc-color($accent);
+            cursor: pointer;
+        }
+    }
+
+    .active{
+        color: bc-color($accent);
+    }
+}

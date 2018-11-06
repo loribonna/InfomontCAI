@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ShelterComponent } from './shelter.component';
 import { CoreModule } from 'src/core/core.module';
-import { TabsService } from 'src/core/tabs-base/tabs.service';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -14,6 +13,6 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     RouterModule
   ],
-  providers: [ TabsService ]
+  providers: []
 })
 export class ShelterModule { }

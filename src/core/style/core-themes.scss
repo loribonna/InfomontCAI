@@ -1,0 +1,7 @@
+
+@import '../tabs-base/tabs-base.component.scss';
+
+// Create a full theme.
+@mixin bc-theme($theme) {
+  @include tabs-base($theme);
+}
