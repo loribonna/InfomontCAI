@@ -6,8 +6,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CacheService } from '../cache.service';
 
 export const TABS: ITab[] = [
-  { name: 'Tab1', link: 'tab1', component: TabGeoComponent, section: "geoData", default: true },
-  { name: 'Tab2', link: 'tab2', section: "services", component: TabServicesComponent }
+  { name: 'Dati Geografici', link: 'geographics', component: TabGeoComponent, section: "geoData", default: true },
+  { name: 'Servizi', link: 'services', section: "services", component: TabServicesComponent }
 ];
 
 
@@ -33,7 +33,7 @@ export function getDefaultRoute(tabs: ITab[] = TABS): any {
   styleUrls: ['./shelter.component.scss']
 })
 export class ShelterComponent implements OnInit {
-  _id: String;
+  shelID: String;
 
   constructor(private route: ActivatedRoute, private cache: CacheService, private router: Router) { }
 
@@ -45,8 +45,8 @@ export class ShelterComponent implements OnInit {
 
   ngOnInit() {
     const sub = this.route.params.subscribe(params => {
-      this._id = params["id"];
-      this.cache.setId(<string>this._id);
+      this.shelID = params["id"];
+      this.cache.setId(<string>this.shelID);
       if (sub) {
         sub.unsubscribe();
       }

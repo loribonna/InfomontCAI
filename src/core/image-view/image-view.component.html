@@ -1,0 +1,9 @@
+<div *ngFor="let imgFile of getFirstImages()">
+  <img [src]="imgFile.url">
+  <!--<div [full-screen]="isFullScreen(img.file._id)" style="height: 100%;width:100%;outline:none" (click)="enlargeImage(img.file._id)">
+    <div class="bc-detail-img-container">
+      <img class="img-rounded bc-detail-img" [src]="img.url">
+    </div>
+    <div *ngIf="img.file.description" class="bc-body bc-detail-img-description">{{img.file.description}}</div>
+  </div>-->
+</div>
