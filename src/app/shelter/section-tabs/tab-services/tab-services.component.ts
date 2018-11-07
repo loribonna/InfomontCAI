@@ -10,12 +10,9 @@ import { ShelterService } from 'src/app/shelter/shelter.service';
   styleUrls: ['./tab-services.component.scss'],
   providers: [ShelterService]
 })
-export class TabServicesComponent extends TabItemBase implements OnInit {
+export class TabServicesComponent extends TabItemBase {
   constructor(protected route: ActivatedRoute, protected cache: CacheService, protected shelterService: ShelterService) {
     super(route, cache, shelterService);
-  }
-
-  ngOnInit() {
   }
 
 }

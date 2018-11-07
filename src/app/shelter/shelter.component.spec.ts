@@ -27,10 +27,25 @@ describe('ShelterComponent', () => {
 
 
 describe('App-Component Routing', () => {
-  it('should have unique tabs target', () => {
+  it('should have unique tabs link', () => {
     const obj = {};
     TABS.forEach(tab => {
       const id = tab.link;
+      if (!obj[id]) {
+        obj[id] = 0;
+      }
+      obj[id] += 1;
+    });
+
+    for (const prop in obj) {
+      expect(obj[prop]).toBeLessThan(2);
+    }
+  });
+
+  it('should have unique tabs section target', () => {
+    const obj = {};
+    TABS.forEach(tab => {
+      const id = tab.section;
       if (!obj[id]) {
         obj[id] = 0;
       }

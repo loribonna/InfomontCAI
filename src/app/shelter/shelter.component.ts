@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ITab } from 'src/core/tabs-base/tabs-base.component';
-import { TabServicesComponent } from '../section-tabs/tab-services/tab-services.component';
-import { TabGeoComponent } from '../section-tabs/tab-geo/tab-geo.component';
+import { TabServicesComponent } from './section-tabs/tab-services/tab-services.component';
+import { TabGeoComponent } from './section-tabs/tab-geo/tab-geo.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CacheService } from '../cache.service';
 
@@ -63,5 +63,8 @@ export class ShelterComponent implements OnInit {
       this.route.firstChild &&
       this.route.firstChild.outlet === 'tab';
   }
+
+
+  updateSection(section: string) {}
 
 }

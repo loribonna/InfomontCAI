@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SectionTabsModule } from './section-tabs/section-tabs.module';
+import { SectionTabsModule } from './shelter/section-tabs/section-tabs.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ShelterModule } from './shelter/shelter.module';
 import { CacheService } from './cache.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,

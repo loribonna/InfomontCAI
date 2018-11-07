@@ -1,4 +1,12 @@
-import { Component, OnInit, QueryList, ContentChildren, OnDestroy, AfterViewInit, AfterContentChecked, AfterViewChecked } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  QueryList,
+  ContentChildren,
+  OnDestroy,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { TabItemComponent, TabItemService } from './tabItem/tabItem.component';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -23,7 +31,7 @@ export interface ITab {
 export class TabsBaseComponent implements OnInit, OnDestroy {
   _selectedItemID: number;
   tabSub: Subscription;
-  @ContentChildren(TabItemComponent, { descendants: true }) _tabs: QueryList<TabItemComponent>;
+  @ContentChildren(TabItemComponent) _tabs: QueryList<TabItemComponent>;
 
   constructor(private tabsService: TabItemService, private route: ActivatedRoute) {
 

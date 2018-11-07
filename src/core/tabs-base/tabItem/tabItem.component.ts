@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, Directive, Injectable } from '@angular/core';
+import { Component, OnInit, Input, Directive, Injectable, Output, EventEmitter } from '@angular/core';
 import { ITab } from '../tabs-base.component';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs/operators';
 
 let _nextItemID = 0;
 
@@ -38,6 +37,8 @@ export class TabItemDirective {
 })
 export class TabItemComponent implements OnInit {
   @Input() content: ITab;
+  @Output() selectionChange = new EventEmitter<ITab>();
+
   _itemID: number;
   active = false;
   _initialized = false;
@@ -69,6 +70,7 @@ export class TabItemComponent implements OnInit {
   }
 
   selected(event: any) {
+    this.selectionChange.emit(this.content);
     this.tabsService.selectTab(this._itemID);
   }
 
