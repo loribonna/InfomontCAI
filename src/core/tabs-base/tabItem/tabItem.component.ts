@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Directive, Injectable, AfterContentInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Directive, Injectable } from '@angular/core';
 import { ITab } from '../tabs-base.component';
 import { Subject } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { filter, map, mergeMap } from 'rxjs/operators';
 
 let _nextItemID = 0;
 
@@ -39,15 +40,31 @@ export class TabItemComponent implements OnInit {
   @Input() content: ITab;
   _itemID: number;
   active = false;
+  _initialized = false;
 
-  constructor(private tabsService: TabItemService, private route: ActivatedRoute) {
+  constructor(private tabsService: TabItemService, private route: ActivatedRoute, private router: Router) {
     this._itemID = _nextItemID++;
+
+    this.router.events.forEach(event => {
+      if (!this._initialized && event instanceof NavigationEnd) {
+        const child = this.route.firstChild;
+        if (child) {
+          this._initialized = true;
+          if (this.content.link === child.routeConfig.path) {
+            this.active = true;
+          }
+        }
+      }
+    });
   }
 
   ngOnInit() {
-    const selectedTab = this.route.firstChild.routeConfig.path;
-    if (this.content.link === selectedTab) {
-      this.active = true;
+    const child = this.route.firstChild;
+    if (child) {
+      this._initialized = true;
+      if (this.content.link === child.routeConfig.path) {
+        this.active = true;
+      }
     }
   }
 
