@@ -1,7 +1,9 @@
 
 @import '../tabs-base/tabs-base.component.scss';
+@import '../image-view/image-view.component.scss';
 
 // Create a full theme.
 @mixin bc-theme($theme) {
   @include tabs-base($theme);
+  @include images($theme);
 }

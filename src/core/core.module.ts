@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { TabsBaseModule } from './tabs-base/tabs-base.module';
+import { ImageViewModule } from './image-view/image-view.module';
 
 const CORE_COMPONENT_MODULES = [
-    TabsBaseModule
+    TabsBaseModule,
+    ImageViewModule
 ];
 
 @NgModule({

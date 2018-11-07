@@ -16,9 +16,12 @@ export abstract class TabItemBase implements OnInit {
     getDataFromCache(id: string) {
         const data = this.cache.getDataSection(this._section);
         if (!data) {
-            this.shelterService.getShelterSection(id, this._section).subscribe(section => {
-                this.cache.updateData(this._section, section);
+            this.shelterService.getShelterSection(id, this._section).subscribe(shelData => {
+                this._data = shelData;
+                this.cache.updateData(this._section, shelData);
             });
+        } else {
+            this._data = data;
         }
     }
 
@@ -45,5 +48,9 @@ export abstract class TabItemBase implements OnInit {
                 sub.unsubscribe();
             }
         });
+    }
+
+    showData() {
+        return JSON.stringify(this._data);
     }
 }
