@@ -10,13 +10,9 @@ import { ShelterService } from 'src/app/shelter/shelter.service';
   styleUrls: ['./tab-geo.component.scss'],
   providers: [ShelterService]
 })
-export class TabGeoComponent extends TabItemBase implements OnInit {
+export class TabGeoComponent extends TabItemBase {
 
   constructor(protected route: ActivatedRoute, protected cache: CacheService, protected shelterService: ShelterService) {
     super(route, cache, shelterService);
   }
-
-  ngOnInit() {
-  }
-
 }

@@ -15,4 +15,4 @@ import { RouterModule } from '@angular/router';
   ],
   providers: []
 })
-export class ShelterModule { }
+export class ShelterModule {}
