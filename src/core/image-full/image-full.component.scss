@@ -25,7 +25,6 @@
         }
 
         position: absolute;
-        background-color: blue;
         color: white;
         width: 30px;
         height: 40px;
@@ -33,11 +32,6 @@
         text-align: center;
         display: inline-block;
         vertical-align: middle;
-
-        &-content {
-          vertical-align: middle;
-          height: 100%;
-        }
 
         &-left {
           left: 0;
@@ -48,13 +42,14 @@
 
         &-right {
           left: auto;
-          right: 0;
+          right: 2%;
           top: 0;
           bottom: 0;
         }
 
         &-close {
-          background-color: red;
+          left: auto;
+          right: 2%;
         }
       }
 
