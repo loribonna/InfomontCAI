@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImageViewComponent } from './image-view.component';
+import { ImageViewComponent, SingleImageDirective } from './image-view.component';
 
 @NgModule({
-  declarations: [ImageViewComponent],
-  exports: [ImageViewComponent],
+  declarations: [ImageViewComponent, SingleImageDirective],
+  exports: [ImageViewComponent, SingleImageDirective],
   imports: [CommonModule]
 })
 export class ImageViewModule { }

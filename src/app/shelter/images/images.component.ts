@@ -84,6 +84,10 @@ export class ImagesComponent implements OnInit {
     });
   }
 
+  getImages() {
+    return this.images.slice(0,4);
+  }
+
   isFullViewEnabled(): boolean {
     return this._fullView && this._fullViewImage != null;
   }

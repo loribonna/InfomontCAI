@@ -9,20 +9,19 @@
 
   .img {
     user-select: none;
+    &:hover {
+      cursor: pointer;
+    }
 
     &-box {
       width: $grid-length;
-      height: $grid-length;
+      height: calc(#{$grid-length} / 2);
       background-color: $grid-background;
       display: grid;
       grid-template-columns: calc(#{$grid-length} / 2) calc(#{$grid-length} / 2);
       grid-row: auto auto;
       align-items: center;
       justify-items: center;
-
-      &:hover {
-        cursor: pointer;
-      }
 
       &-cell {
         background-color: $grid-background;
@@ -33,6 +32,11 @@
         overflow: hidden;
         height: 100%;
         width: 100%;
+
+        &-single {
+          height: 100%;
+          width: 100%;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 <app-image-view
   class="img-block"
   (click)="openImageView()"
-  [content]="images"
+  [content]="getImages()"
 ></app-image-view>
 <app-image-full
   (close)="closeImageView()"
