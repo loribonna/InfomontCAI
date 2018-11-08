@@ -1,0 +1,25 @@
+<div class="img-full-container" *ngIf="enabled">
+  <div
+    (click)="closeImage()"
+    class="img-full-control img-full-control-close"
+  >
+    X
+  </div>
+  <div
+    (click)="previousImage()"
+    class="img-full-control img-full-control-left"
+  >
+    <p class="img-full-control-content"><-</p>
+  </div>
+  <img
+    (click)="closeImage()"
+    class="img-full-view"
+    [src]="content"
+  />
+  <div
+    (click)="nextImage()"
+    class="img-full-control img-full-control-right"
+  >
+    <p class="img-full-control-content">-></p>
+  </div>
+</div>
