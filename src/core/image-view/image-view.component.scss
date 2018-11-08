@@ -1,85 +1,109 @@
-@import '../style/typography.scss';
-@import '../style/theme.scss';
+@import "../style/typography.scss";
+@import "../style/theme.scss";
 
-@mixin images($theme){
-  $accent:map-get($theme,accent);
+@mixin images($theme) {
+  $accent: map-get($theme, accent);
   $background: map-get($theme, background);
+  $grid-length: 400px;
+  $grid-background: #333;
 
-  .img{
-    outline: none;
-    width: 100%;
-    object-fit:cover;
-    height:100%;
-  
-    &:hover{
-      cursor: pointer;
-    };
-  
-    &-name{
-      &:hover{
+  .img {
+    user-select: none;
+
+    &-box {
+      width: $grid-length;
+      height: $grid-length;
+      background-color: $grid-background;
+      display: grid;
+      grid-template-columns: calc(#{$grid-length} / 2) calc(#{$grid-length} / 2);
+      grid-row: auto auto;
+      align-items: center;
+      justify-items: center;
+
+      &:hover {
         cursor: pointer;
-        color:map-get($bc-teal,400);
-        outline: none;
       }
-    };
 
-    &-title{
-      color:bc-color($accent);
-    }
-  
-    &-description{
-      border-color: bc-color($background,"status-bar");
-      border-radius: 6px;
-      display: block;
-      text-align: center;
-      margin:1% 0;
-      border-width: 1px;
-      border-style:solid;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  
-    $parent:&;
-  
-    &-full{
-      cursor: pointer;
-      outline: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      background-color: black;
-    
-      #{$parent}-container{
-        display: table;
-        position: absolute;
+      &-cell {
+        background-color: $grid-background;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        object-fit: cover;
+        overflow: hidden;
+        height: 100%;
         width: 100%;
-        height:100%;
       }
-    
-      img{
-        margin:auto;
+    }
+
+    &-full {
+      &-container {
+        user-select: none;
+        outline: none;
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        background-color: $grid-background;
+        width: 100%;
+        height: 100%;
+      }
+
+      &-control {
+        &:hover {
+          cursor: pointer;
+        }
+
+        position: absolute;
+        background-color: blue;
+        color: white;
+        width: 30px;
+        height: 40px;
+        margin: auto;
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+
+        &-content {
+          vertical-align: middle;
+          height: 100%;
+        }
+
+        &-left {
+          left: 0;
+          right: auto;
+          top: 0;
+          bottom: 0;
+
+        }
+
+        &-right {
+          left: auto;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+
+        &-close {
+          background-color: red;
+        }
+      }
+
+      &-view {
+        position: absolute;
+        margin: auto;
         bottom: 0;
         top: 0;
         left: 0;
         right: 0;
-        position: absolute;
-        max-width: 85%;
-        max-height: 85%;
-        object-fit:contain;
-      }
-      
-      #{$parent}-description{
-        border: 0;
-        text-align: center;
-        color: white;
-        position:absolute;
-        bottom:4%;
-        margin:auto;
-        width: 100%;
+
+        max-width: 95%;
+        max-height: 95%;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
-
 }

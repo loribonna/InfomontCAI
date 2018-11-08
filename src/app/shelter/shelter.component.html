@@ -1,12 +1,11 @@
+<app-image-view [shelterId]="shelID"></app-image-view>
+
 
 <!--
-  <app-image-view [shelterId]="shelID"></app-image-view>
--->
-
-
 
 <app-tabs-base>
   <app-tab-item (selectionChange)="updateSection($event)" *ngFor="let tab of TABS" [content]="tab" [routerLink]="getLink(tab.link)"></app-tab-item>
   <router-outlet name="tab"></router-outlet>
 </app-tabs-base>
 
+-->
