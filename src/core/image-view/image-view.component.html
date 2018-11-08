@@ -1,3 +1,19 @@
-<div class="img img-box">
-  <img class="img img-box-cell" [src]="imgFile.url" *ngFor="let imgFile of getFirstImages()"/>
+<div *ngIf="isSingleImage()">
+  <img class="img img-box-cell" [src]="getSingleImage().url" />
+</div>
+
+<div class="img img-box" *ngIf="!isSingleImage()">
+  <img
+    class="img img-box-cell"
+    [src]="imgFile.url"
+    *ngFor="let imgFile of getFirstImages()"
+  />
+</div>
+
+<div class="img img-box" *ngIf="!isSingleImage()">
+  <img
+    class="img img-box-cell"
+    [src]="imgFile.url"
+    *ngFor="let imgFile of getLastImages()"
+  />
 </div>
