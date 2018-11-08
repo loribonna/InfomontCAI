@@ -1,0 +1,12 @@
+<app-image-view
+  class="img-block"
+  (click)="openImageView()"
+  [content]="images"
+></app-image-view>
+<app-image-full
+  (close)="closeImageView()"
+  (next)="nextImageView()"
+  (previous)="previousImageView()"
+  [enabled]="isFullViewEnabled()"
+  [content]="getFullViewImageSrc()"
+></app-image-full>
