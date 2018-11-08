@@ -2,10 +2,12 @@
 @import '../tabs-base/tabs-base.component.scss';
 @import '../image-view/image-view.component.scss';
 @import '../image-full/image-full.component.scss';
+@import '../icon/icon.component.scss';
 
 // Create a full theme.
 @mixin bc-theme($theme) {
   @include tabs-base($theme);
   @include image-view($theme);
   @include image-full($theme);
+  @include bc-icon-theme($theme);
 }
