@@ -1,9 +1,10 @@
-<div *ngFor="let imgFile of getFirstImages()">
-  <img [src]="imgFile.url">
-  <!--<div [full-screen]="isFullScreen(img.file._id)" style="height: 100%;width:100%;outline:none" (click)="enlargeImage(img.file._id)">
-    <div class="bc-detail-img-container">
-      <img class="img-rounded bc-detail-img" [src]="img.url">
-    </div>
-    <div *ngIf="img.file.description" class="bc-body bc-detail-img-description">{{img.file.description}}</div>
-  </div>-->
+<div (click)="openImageView()" class="img img-box">
+  <img class="img img-box-cell" [src]="imgFile.url" *ngFor="let imgFile of getFirstImages(); let i = index"/>
+</div>
+
+<div class="img-full-container" *ngIf="isFullViewEnabled()">
+  <div (click)="closeImageView()" class="img-full-control img-full-control-close">X</div>
+  <div (click)="previousImageView()" class="img-full-control img-full-control-left"> <p class="img-full-control-content"><-</p> </div>
+  <img (click)="closeImageView()" class="img-full-view" [src]="getFullViewImage()"/>
+  <div (click)="nextImageView()" class="img-full-control img-full-control-right"> <p class="img-full-control-content">-></p> </div>
 </div>
