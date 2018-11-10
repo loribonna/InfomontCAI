@@ -15,16 +15,6 @@ export class TabItemService {
   }
 }
 
-@Directive({
-  selector: 'app-tab-item[active]',
-  host: {
-    '[class.active]': 'active'
-  }
-})
-export class TabItemDirective {
-  @Input() active: boolean;
-}
-
 @Component({
   selector: 'app-tab-item',
   templateUrl: './tabItem.component.html',
