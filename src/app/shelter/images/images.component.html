@@ -1,12 +1,10 @@
 <app-image-view
   class="img-block"
   (click)="openImageView()"
-  [content]="getImages()"
+  [content]="getImagesSlice()"
 ></app-image-view>
-<app-image-full
+<app-image-gallery
   (close)="closeImageView()"
-  (next)="nextImageView()"
-  (previous)="previousImageView()"
   [enabled]="isFullViewEnabled()"
-  [content]="getFullViewImageSrc()"
-></app-image-full>
+  [content]="getImages()"
+></app-image-gallery>

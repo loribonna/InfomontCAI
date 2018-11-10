@@ -4,11 +4,6 @@ import { ShelterService, IImage } from "../shelter.service";
 import { mergeMap } from "rxjs/operators";
 import { Buffer } from "buffer";
 
-export const enum KEY_CODES {
-  RIGHT_ARROW = 39,
-  LEFT_ARROW = 37
-}
-
 @Component({
   selector: "app-images",
   templateUrl: "./images.component.html",
@@ -20,23 +15,11 @@ export class ImagesComponent implements OnInit {
   images: IImageData[] = [];
   downloading = false;
   _fullView = false;
-  _fullViewImage: number;
-
-  @HostListener("window:keyup", ["$event"])
-  keyEvent(event: KeyboardEvent) {
-    if (this._fullView) {
-      if (event.keyCode === KEY_CODES.LEFT_ARROW) {
-        this.previousImageView();
-      } else if (event.keyCode === KEY_CODES.RIGHT_ARROW) {
-        this.nextImageView();
-      }
-    }
-  }
 
   constructor(
     private cache: CacheService,
     private shelterService: ShelterService
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (this.shelterId) {
@@ -84,40 +67,19 @@ export class ImagesComponent implements OnInit {
     });
   }
 
+  getImagesSlice() {
+    return this.images.slice(0, 4);
+  }
+
   getImages() {
-    return this.images.slice(0,4);
+    return this.images;
   }
 
   isFullViewEnabled(): boolean {
-    return this._fullView && this._fullViewImage != null;
-  }
-
-  getFullViewImageSrc(): any {
-    if (
-      this._fullView &&
-      this._fullViewImage != null &&
-      this.images[this._fullViewImage]
-    ) {
-      return this.images[this._fullViewImage].url;
-    } else {
-      return "";
-    }
-  }
-
-  previousImageView() {
-    if (this._fullViewImage > 0) {
-      this._fullViewImage--;
-    }
-  }
-
-  nextImageView() {
-    if (this._fullViewImage < this.images.length - 1) {
-      this._fullViewImage++;
-    }
+    return this._fullView;
   }
 
   openImageView() {
-    this._fullViewImage = 0;
     this._fullView = true;
   }
 
