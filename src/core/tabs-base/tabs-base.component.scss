@@ -7,15 +7,16 @@
         $foreground: map-get($theme, foreground);
         $accent: map-get($theme, accent);
 
-        margin-left: 2%;
-        margin-right: 2%;
+        margin: 1% 2% 1% 2%;
 
         &-header {
-            display: inline-flex
+            display: inline-flex;
+            white-space: nowrap;
+            margin-left: 10px;
         }
 
         &-content {
-            border: 1px solid bc-color($foreground, divider);
+            border: 1px solid bc-color($foreground, hint-text);
         }
         
         color: bc-color($foreground, 'text');

@@ -19,7 +19,7 @@ import { BcStyler } from '../shared/bc-styler';
     },
     encapsulation: ViewEncapsulation.None
 })
-export class IconComponent extends BcStyler {
+export class BcIconComponent extends BcStyler {
     private _name: string;
     private _size: string;
 

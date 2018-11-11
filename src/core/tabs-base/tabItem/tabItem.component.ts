@@ -20,9 +20,7 @@ export class TabItemService {
   templateUrl: './tabItem.component.html',
   styleUrls: ['./tabItem.component.scss'],
   host: {
-    'role': 'tabItem',
-    '(click)': 'selected($event)',
-    '[class.active]': 'active'
+    'role': 'tabItem'
   }
 })
 export class TabItemComponent implements OnInit {

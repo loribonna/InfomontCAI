@@ -4,12 +4,17 @@ import { TabServicesComponent } from './section-tabs/tab-services/tab-services.c
 import { TabGeoComponent } from './section-tabs/tab-geo/tab-geo.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CacheService } from '../cache.service';
+import { TabContactsComponent } from './section-tabs/tab-contacts/tab-contacts.component';
+import { TabOpeningsComponent } from './section-tabs/tab-openings/tab-openings.component';
+import { TabPropertyComponent } from './section-tabs/tab-property/tab-property.component';
 
 export const TABS: ITab[] = [
-  { name: 'Dati Geografici', link: 'geographics', component: TabGeoComponent, section: "geoData", default: true },
-  { name: 'Servizi', link: 'services', section: "services", component: TabServicesComponent }
+  { name: 'Posizione', link: 'geographics', component: TabGeoComponent, section: "geoData", default: true },
+  { name: 'Servizi', link: 'services', section: "services", component: TabServicesComponent },
+  { name: 'Apertura', link: 'openings', component: TabOpeningsComponent, section: "openingTime"},
+  { name: 'Contatti', link: 'contacts', section: "contacts", component: TabContactsComponent },
+  { name: 'Proprietà e struttura', link: 'property', component: TabPropertyComponent, section: "management"},
 ];
-
 
 export function getDefaultRouteString(tabs: ITab[] = TABS): string {
   const defTab = tabs.find(tab => tab.default);
@@ -34,10 +39,9 @@ export function getDefaultRoute(tabs: ITab[] = TABS): any {
 })
 export class ShelterComponent implements OnInit {
   shelID: String;
+  TABS: ITab[] = TABS;
 
   constructor(private route: ActivatedRoute, private cache: CacheService, private router: Router) { }
-
-  TABS: ITab[] = TABS;
 
   getLink(link: string) {
     return [{ outlets: ({ 'tab': [link] }) }];
