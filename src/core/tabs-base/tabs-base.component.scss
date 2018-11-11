@@ -7,8 +7,6 @@
         $foreground: map-get($theme, foreground);
         $accent: map-get($theme, accent);
 
-        margin: 1% 2% 1% 2%;
-
         &-header {
             display: inline-flex;
             white-space: nowrap;

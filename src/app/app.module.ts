@@ -6,6 +6,8 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { ShelterModule } from "./shelter/shelter.module";
 import { CacheService } from "./cache.service";
 import { HttpClientModule } from "@angular/common/http";
+import { ShelterService } from "./shelter/shelter.service";
+
 @NgModule({
   declarations: [AppComponent, PageNotFoundComponent],
   imports: [
@@ -14,7 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [CacheService],
+  providers: [ShelterService, CacheService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -10,7 +10,7 @@
         &-container {
           user-select: none;
           outline: none;
-          position: absolute;
+          position: fixed;
           z-index: 10;
           left: 0;
           top: 0;
@@ -26,7 +26,7 @@
   
         &-control {
           z-index: 11;
-          position: absolute;
+          position: fixed;
           color: white;
           width: 30px;
           height: 40px;
@@ -40,7 +40,7 @@
           }
   
           &-left {
-            left: 3%;
+            left: 2%;
             right: auto;
             top: 0;
             bottom: 0;
@@ -48,7 +48,7 @@
   
           &-right {
             left: auto;
-            right: 5%;
+            right: 4%;
             top: 0;
             bottom: 0;
           }
@@ -62,7 +62,7 @@
   
         &-view {
           z-index: 11;
-          position: absolute;
+          position: fixed;
           margin: auto;
           bottom: 0;
           top: 0;
