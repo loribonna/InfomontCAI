@@ -1,6 +1,15 @@
-<app-images [shelterId]="shelID"></app-images>
-
-<app-tabs-base>
-  <app-tab-item (selectionChange)="updateSection($event)" *ngFor="let tab of TABS" [content]="tab" [routerLink]="getLink(tab.link)"></app-tab-item>
-  <router-outlet name="tab"></router-outlet>
-</app-tabs-base>
+<div class="container">
+  <div class="top-container">
+    <div class="top-content top-content-data">{{ showData() }}</div>
+    <div class="top-content top-content-images"><app-images class="top-content-images-content"></app-images></div>
+  </div>
+  <app-tabs-base class="bottom-container">
+    <app-tab-item
+      (selectionChange)="updateSection($event)"
+      *ngFor="let tab of TABS"
+      [content]="tab"
+      [routerLink]="getLink(tab.link)"
+    ></app-tab-item>
+    <router-outlet name="tab"></router-outlet>
+  </app-tabs-base>
+</div>
