@@ -1,3 +1,15 @@
-<div class="tab-item-header">
-    {{content.name}}
+<div
+  class="tab-item-header"
+  data-bc-button
+  data-type="solid"
+  (click)="selected($event)"
+  [active]="active"
+>
+  {{ content.name }}
 </div>
+
+<!--
+  <div class="tab-item-header">
+      {{content.name}}
+  </div>
+-->

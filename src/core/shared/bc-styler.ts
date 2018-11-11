@@ -43,7 +43,7 @@ export class BcStyler {
   }
 
   /** @hidden */
-  private _setElementClass(className: string, isAdd: boolean) {
+  protected _setElementClass(className: string, isAdd: boolean) {
     if (this._element != null && className != null && className !== "") {
       this._renderer =
         this._renderer.constructor.name === "RendererAdapter"
