@@ -1,15 +1,42 @@
-<div class="container">
-  <div class="top-container">
-    <div class="top-content top-content-data">{{ showData() }}</div>
-    <div class="top-content top-content-images"><app-images class="top-content-images-content"></app-images></div>
-  </div>
-  <app-tabs-base class="bottom-container">
-    <app-tab-item
-      (selectionChange)="updateSection($event)"
-      *ngFor="let tab of TABS"
-      [content]="tab"
-      [routerLink]="getLink(tab.link)"
-    ></app-tab-item>
-    <router-outlet name="tab"></router-outlet>
-  </app-tabs-base>
-</div>
+<bc-content>
+  <bc-content-header>
+    <app-navbar>
+      <img
+        style="height: 32px"
+        src="../assets/images/logo_32x28.png"
+        alt="logo"
+      />
+      <span> <h4>UnicoCAI rifugi</h4> </span>
+    </app-navbar>
+  </bc-content-header>
+  <!-- Routed views go here -->
+  <bc-content-section>
+    <div class="top-container">
+      <div class="top-content top-content-data">{{ showData() }}</div>
+      <div class="top-content top-content-images">
+        <app-images class="top-content-images-content"></app-images>
+      </div>
+    </div>
+    <app-tabs-base class="bottom-container">
+      <app-tab-item
+        (selectionChange)="updateSection($event)"
+        *ngFor="let tab of TABS"
+        [content]="tab"
+        [routerLink]="getLink(tab.link)"
+      ></app-tab-item>
+      <router-outlet name="tab"></router-outlet>
+    </app-tabs-base>
+  </bc-content-section>
+  <bc-content-footer>
+    <app-navbar>
+      <span style="font-size: 12px; line-height: 12px; font-weight: 400">
+        Copyright © 2017 all rights reserved.
+      </span>
+    </app-navbar>
+  </bc-content-footer>
+  <!--
+    <bc-spinner></bc-spinner>
+    <bc-toast></bc-toast>
+    <bc-modal></bc-modal>
+  -->
+</bc-content>
