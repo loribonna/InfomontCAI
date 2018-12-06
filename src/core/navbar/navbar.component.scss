@@ -1,11 +1,14 @@
 $base-header-color: #06293f;
 $navbar-height: 36px;
 .app-navbar {
-  background-color: $base-header-color;
   width: 100%;
   min-height: $navbar-height;
-  display: flex;
   color: white;
-  flex-direction: row;
-  align-items: center;
+  &-content {
+    align-items: center;
+    background-color: $base-header-color;
+    display: flex;
+    flex-direction: row;
+    padding: 2px 0 2px 2px;
+  }
 }

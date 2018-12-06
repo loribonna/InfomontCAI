@@ -53,8 +53,9 @@ export class ShelterService {
             catchError(this.handleError.bind(this)));
     }
 
-    getShelter(id: String): Observable<object> {
-        return this.http.get(this.sheltersBaseUrl + `/${id}`).pipe(
+    getShelter(id: String, header?): Observable<object> {
+        const params = header ? {header: header} : null;
+        return this.http.get(this.sheltersBaseUrl + `/${id}`, {params: params}).pipe(
             catchError(this.handleError.bind(this)));
     }
 

@@ -12,7 +12,27 @@
   <!-- Routed views go here -->
   <bc-content-section>
     <div class="top-container">
-      <div class="top-content top-content-data">{{ showData() }}</div>
+      <div class="top-content top-content-data">
+        <div class="bc-h2">{{ getHeaderProperty('name') }}</div>
+        <div class="bc-h5 top-content-data-line">
+          <bc-icon data-name="map-marker"></bc-icon>
+          {{ getLocationProperty("massif", "valley") | titlecase }},
+          {{ getLocationProperty("locality") | titlecase }}
+          (
+            {{getLocationProperty("municipality") | titlecase }}
+          - {{ getLocationProperty("province") | titlecase }}
+          )
+        </div>
+        <div class="bc-h5 top-content-data-line">
+            Sezione: {{getHeaderProperty('owner')}}
+        </div>
+        <div class="bc-h5 top-content-data-line">
+            Categoria: {{getHeaderProperty('category') || '-'}}
+        </div>
+        <div class="bc-h5 top-content-data-multiline">
+            {{getLocationProperty('site')}}
+        </div>
+      </div>
       <div class="top-content top-content-images">
         <app-images class="top-content-images-content"></app-images>
       </div>
@@ -30,7 +50,7 @@
   <bc-content-footer>
     <app-navbar>
       <span style="font-size: 12px; line-height: 12px; font-weight: 400">
-        Copyright © 2017 all rights reserved.
+        Copyright © 2018 all rights reserved.
       </span>
     </app-navbar>
   </bc-content-footer>

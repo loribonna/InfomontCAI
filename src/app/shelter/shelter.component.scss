@@ -1,3 +1,9 @@
+@import '../../core/style/typography.scss';
+
+@include bc-typography();
+
+$content-base-margin: 10px;
+
 .container {
   position: relative;
   width: 100%;
@@ -18,8 +24,18 @@
     display: block;
 
     &-data {
-      margin-right: 1%;
+      margin: $content-base-margin;
       max-width: 50%;
+
+      &-line {
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      &-multiline {
+          margin-top: 3px;
+          font-weight: 400;
+      }
     }
 
     &-images {
