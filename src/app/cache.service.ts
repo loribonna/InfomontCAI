@@ -68,6 +68,19 @@ export class CacheService {
     });
   }
 
+  private _getShelterHeader(shelId: string): Observable<object> {
+    return this.shelterService.getShelter(shelId, true).pipe(
+      map(shelData => {
+        for (const prop in shelData) {
+          if (this.data[prop] == null) {
+            this.updateData(prop, shelData[prop]);
+          }
+        }
+        return shelData;
+      })
+    );
+  }
+
   loadShelterImages(shelId?: string): Observable<IImageData> {
     const cachedData = this._getImages();
     if (!cachedData) {
@@ -78,6 +91,19 @@ export class CacheService {
       } else {
         return this.getId().pipe(mergeMap(id => this._getImagesFromShelId(id)));
       }
+    }
+  }
+
+  loadShelterHeader(shelId?): Observable<object> {
+    const data = <any>this.data;
+    if (!data.idCai) {
+      if (!shelId) {
+        return this.getId().pipe(mergeMap(id => this._getShelterHeader(id)));
+      } else {
+        return this._getShelterHeader(shelId);
+      }
+    } else {
+      return obsOf(this.data);
     }
   }
 
