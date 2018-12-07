@@ -3,7 +3,7 @@ import { CacheService } from "../../cache.service";
 import { ActivatedRoute } from "@angular/router";
 
 export abstract class TabItemBase implements OnInit, OnDestroy {
-    data: any = {};
+    data: any;
     _section: string;
     _baseProperty: string;
 
@@ -26,7 +26,7 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
         const cacheSub = this.cache
             .loadShelterSection(section)
             .subscribe(data => {
-                this.data[section] = data[section];
+                this.data[section] = data;
                 if (cacheSub) {
                     cacheSub.unsubscribe();
                 }
@@ -62,10 +62,10 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
     getPropertyUnformatted(prop) {
         if (this._baseProperty) {
             return this._resolveProperty(
-                this._section + "." + this._baseProperty + "." + prop
+                this._baseProperty + "." + prop
             );
         } else {
-            return this._resolveProperty(this._section + "." + prop);
+            return this._resolveProperty(prop);
         }
     }
 
@@ -74,7 +74,7 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
     }
 
     getBaseProperty() {
-        return this._resolveProperty(this._section);
+        return this.data;
     }
 
     afterInit() {}
