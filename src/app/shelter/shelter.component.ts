@@ -8,6 +8,7 @@ import { TabContactsComponent } from "./section-tabs/tab-contacts/tab-contacts.c
 import { TabOpeningsComponent } from "./section-tabs/tab-openings/tab-openings.component";
 import { TabPropertyComponent } from "./section-tabs/tab-property/tab-property.component";
 import { merge, Subscription } from "rxjs";
+import { map } from "rxjs/operators";
 
 export const TABS: ITab[] = [
     {
@@ -86,7 +87,13 @@ export class ShelterComponent implements OnInit, OnDestroy {
             this.cache.setId(shelId);
             this.cacheSub = merge(
                 this.cache.loadShelterHeader(shelId),
-                this.cache.loadShelterSection(this._section, shelId),
+                this.cache.loadShelterSection(this._section, shelId).pipe(
+                    map(data => {
+                        const obj = {};
+                        obj[this._section] = data;
+                        return obj;
+                    })
+                ),
             ).subscribe(data => {
                 this._data = Object.assign({}, this._data, data);
             });
