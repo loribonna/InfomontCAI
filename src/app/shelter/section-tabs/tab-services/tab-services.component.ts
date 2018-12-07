@@ -140,10 +140,11 @@ function chunkArray(array: any[], nChunks: number) {
     if (!array) {
         return null;
     }
+    const arr = array.slice();
     const chunkSize = Math.ceil(array.length / nChunks);
     const results = [];
-    while (array.length) {
-        results.push(array.splice(0, chunkSize));
+    while (arr.length) {
+        results.push(arr.splice(0, chunkSize));
     }
     return results;
 }

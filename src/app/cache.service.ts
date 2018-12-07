@@ -29,12 +29,7 @@ export class CacheService {
         shelId: string,
         section: string
     ): Observable<object> {
-        return this.shelterService.getShelterSection(shelId, section).pipe(
-            map(shelData => {
-                this.updateData(section, shelData);
-                return shelData;
-            })
-        );
+        return this.shelterService.getShelterSection(shelId, section);
     }
 
     private _getImagesFromShelId(shelId: string): Observable<IImageData> {
@@ -113,10 +108,19 @@ export class CacheService {
         if (!data) {
             if (!shelId) {
                 return this.getId().pipe(
-                    mergeMap(id => this._getSectionFromShelId(id, section))
+                    mergeMap(id => this._getSectionFromShelId(id, section)),
+                    map(shelData => {
+                        this.updateData(section, shelData);
+                        return shelData[section];
+                    })
                 );
             } else {
-                return this._getSectionFromShelId(shelId, section);
+                return this._getSectionFromShelId(shelId, section).pipe(
+                    map(shelData => {
+                        this.updateData(section, shelData);
+                        return shelData[section];
+                    })
+                );
             }
         } else {
             return obsOf(data);
@@ -124,10 +128,10 @@ export class CacheService {
     }
 
     updateData(section: string, data: any): void {
-        this.data[section] = data[section];
-        
-        this.updateDataSubject.next({ section: section, data: data });
-
+        if (!this.data[section]) {
+            this.data[section] = data[section];
+            //this.updateDataSubject.next({ section: section, data: data });
+        }
     }
 
     getDataSection(section: string): object {
