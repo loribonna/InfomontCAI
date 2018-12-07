@@ -7,6 +7,7 @@ import { BcButtonModule } from './button/button.module';
 import { BcContentModule } from './content/content.module';
 import { NavbarModule } from './navbar/navbar.module';
 
+
 const CORE_COMPONENT_MODULES = [
     TabsBaseModule,
     ImageViewModule,

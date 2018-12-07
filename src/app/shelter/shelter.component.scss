@@ -1,66 +1,71 @@
-@import '../../core/style/typography.scss';
+@import "../../core/style/typography.scss";
 
 @include bc-typography();
 
 $content-base-margin: 10px;
+$image-box-width: 25%;
 
 .container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  padding-right: 2%;
-  padding-left: 2%;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    padding-right: 2%;
+    padding-left: 2%;
 }
 
 .top {
-  &-container {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1%;
-  }
+    margin: $content-base-margin;
 
-  &-content {
-    display: block;
-
-    &-data {
-      margin: $content-base-margin;
-      max-width: 50%;
-
-      &-line {
-        font-weight: 400;
-        line-height: 1.6;
-      }
-
-      &-multiline {
-          margin-top: 3px;
-          font-weight: 400;
-      }
+    &-container {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1%;
     }
 
-    &-images {
-      width: 30%;
-      position: relative;
-      margin-left: auto;
-      margin-right: 0;
-      &::before {
-        content: "";
+    &-content {
         display: block;
-        padding-top: 100%;
-      }
-      &-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-      }
+
+        &-data {
+            max-width: 50%;
+
+            &-line {
+                font-weight: 400;
+                line-height: 1.6;
+            }
+
+            &-multiline {
+                margin-top: 3px;
+                font-weight: 400;
+            }
+        }
+
+        &-images {
+            width: $image-box-width;
+            
+            position: relative;
+            margin-left: auto;
+            margin-right: 0;
+
+            &::before {
+                content: "";
+                display: block;
+                padding-top: 100%;
+            }
+
+            &-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+            }
+        }
     }
-  }
 }
 
 .bottom {
-  &-container {
-    margin-top: 1%;
-  }
+    &-container {
+        margin-top: 1%;
+    }
 }

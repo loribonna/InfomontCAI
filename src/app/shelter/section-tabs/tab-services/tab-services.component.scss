@@ -1,0 +1,15 @@
+@import '../../../../core/style/typography.scss';
+
+.service-container {
+    display: flex;
+    color: $base-color;
+
+    &-column {
+        width: 50%;
+    }
+
+    &-divider {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+}

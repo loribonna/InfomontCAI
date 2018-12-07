@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
-import { BcIconComponent } from "./icon.component";
+import { BcIconComponent, UncheckIconDirective} from "./icon.component";
 
 @NgModule({
-  declarations: [BcIconComponent],
-  exports: [BcIconComponent]
+  declarations: [BcIconComponent, UncheckIconDirective],
+  exports: [BcIconComponent, UncheckIconDirective]
 })
 export class IconModule {}

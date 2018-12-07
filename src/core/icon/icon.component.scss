@@ -1,4 +1,4 @@
-@import '../style/theme.scss';
+@import "../style/theme.scss";
 
 // The width/height of the icon element.
 $bc-icon-size-xs: 14px;
@@ -10,25 +10,30 @@ $bc-icon-size-xl: 42px;
 $bc-icon-margin: 8px;
 
 @mixin bc-icon-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $err: map-get($theme, danger);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
-  .bc-icon {
-    &.bc-primary {
-      color: bc-color($primary);
-    }
+    .bc-icon {
+        &.bc-primary {
+            color: bc-color($primary);
+        }
 
-    &.bc-accent {
-      color: bc-color($accent);
-    }
+        &.bc-accent {
+            color: bc-color($accent);
+        }
 
-    &.bc-warn {
-       color: bc-color($warn);
+        &.bc-warn {
+            color: bc-color($warn);
+        }
+
+        &.uncheck {
+            color: bc-color($err);
+        }
     }
-  }
 }
 
 .bc-icon {
@@ -40,24 +45,24 @@ $bc-icon-margin: 8px;
     width: $bc-icon-size;
     font-size: $bc-icon-size;
     margin: $bc-icon-margin;
-    
-    &.bc-icon-xs{
+
+    &.bc-icon-xs {
         height: $bc-icon-size-xs;
         width: $bc-icon-size-xs;
         font-size: $bc-icon-size-xs;
     }
-    &.bc-icon-s{
+    &.bc-icon-s {
         height: $bc-icon-size-s;
         width: $bc-icon-size-s;
         font-size: $bc-icon-size-s;
     }
 
-    &.bc-icon-l{
+    &.bc-icon-l {
         height: $bc-icon-size-l;
         width: $bc-icon-size-l;
         font-size: $bc-icon-size-l;
     }
-    &.bc-icon-xl{
+    &.bc-icon-xl {
         height: $bc-icon-size-xl;
         width: $bc-icon-size-xl;
         font-size: $bc-icon-size-xl;
