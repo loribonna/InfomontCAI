@@ -1,0 +1,13 @@
+@import '../../../../core/style/typography.scss';
+
+.opening {
+    &-line {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &-icon {
+        color: $base-color; 
+    }
+}
