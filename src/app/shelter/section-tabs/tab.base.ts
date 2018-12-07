@@ -1,9 +1,9 @@
-import { OnInit } from "@angular/core";
+import { OnInit, OnDestroy } from "@angular/core";
 import { CacheService } from "../../cache.service";
 import { ActivatedRoute } from "@angular/router";
 
-export abstract class TabItemBase implements OnInit {
-    _data: any;
+export abstract class TabItemBase implements OnInit, OnDestroy {
+    data: any = {};
     _section: string;
     _baseProperty: string;
 
@@ -19,18 +19,32 @@ export abstract class TabItemBase implements OnInit {
             } else {
                 return null;
             }
-        }, this._data);
+        }, this.data);
     }
 
-    initData() {
+    addSectionToData(section: string) {
         const cacheSub = this.cache
-            .loadShelterSection(this._section)
+            .loadShelterSection(section)
             .subscribe(data => {
-                this._data = data;
+                this.data[section] = data[section];
                 if (cacheSub) {
                     cacheSub.unsubscribe();
                 }
             });
+    }
+
+    initData() {
+        if (this._section) {
+            const cacheSub = this.cache
+                .loadShelterSection(this._section)
+                .subscribe(data => {
+                    this.data = data;
+                    this.afterInit();
+                    if (cacheSub) {
+                        cacheSub.unsubscribe();
+                    }
+                });
+        }
     }
 
     ngOnInit() {
@@ -43,23 +57,25 @@ export abstract class TabItemBase implements OnInit {
         });
     }
 
-    showData() {
-        return JSON.stringify(this._data);
-    }
+    ngOnDestroy() {}
 
     getPropertyUnformatted(prop) {
         if (this._baseProperty) {
-            return this._resolveProperty(this._section + "." + this._baseProperty + "." + prop);
+            return this._resolveProperty(
+                this._section + "." + this._baseProperty + "." + prop
+            );
         } else {
             return this._resolveProperty(this._section + "." + prop);
         }
     }
 
     getProperty(prop) {
-        return this.getPropertyUnformatted(prop) || '---';
+        return this.getPropertyUnformatted(prop) || "---";
     }
 
     getBaseProperty() {
         return this._resolveProperty(this._section);
     }
+
+    afterInit() {}
 }

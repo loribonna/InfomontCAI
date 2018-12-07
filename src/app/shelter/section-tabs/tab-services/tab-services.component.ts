@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Directive, Input } from "@angular/core";
+import { Component, ViewEncapsulation, Directive, Input, ChangeDetectionStrategy } from "@angular/core";
 import { TabItemBase } from "../tab.base";
 import { CacheService } from "src/app/cache.service";
 import { ActivatedRoute } from "@angular/router";

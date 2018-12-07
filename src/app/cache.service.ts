@@ -73,11 +73,6 @@ export class CacheService {
     private _getShelterHeader(shelId: string): Observable<object> {
         return this.shelterService.getShelter(shelId, true).pipe(
             map(shelData => {
-                /*for (const prop in shelData) {
-          if (this.data[prop] == null) {
-            this.updateData(prop, shelData[prop]);
-          }
-        }*/
                 return shelData;
             })
         );
@@ -129,10 +124,10 @@ export class CacheService {
     }
 
     updateData(section: string, data: any): void {
-        if (!this.data[section]) {
-            this.data = Object.assign({}, this.data[section], data[section])
-            this.updateDataSubject.next({ section: section, data: data });
-        }
+        this.data[section] = data[section];
+        
+        this.updateDataSubject.next({ section: section, data: data });
+
     }
 
     getDataSection(section: string): object {
