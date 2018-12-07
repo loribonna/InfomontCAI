@@ -1,0 +1,15 @@
+@import "../../../../core/style/typography.scss";
+
+@include bc-typography();
+
+.contact {
+    &-line {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &-icon {
+        color: $base-color;
+    }
+}

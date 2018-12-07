@@ -2,12 +2,14 @@
 
 @include bc-typography();
 
-.geo-line {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+.geo {
+    &-line {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
 
-.geo-icon {
-    color: $base-color;
+    &-icon {
+        color: $base-color;
+    }
 }
