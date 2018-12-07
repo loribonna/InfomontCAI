@@ -1,0 +1,25 @@
+@import '../../../../core/style/typography.scss';
+
+.property {
+    &-line {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &-icon {
+        color: $base-color;
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    &-divider {
+        margin-left: 2%;
+        margin-right: 8%;
+    }
+}
+
+.container {
+    margin: 0.1%;
+    width: 50%;
+}
