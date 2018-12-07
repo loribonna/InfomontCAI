@@ -1,5 +1,19 @@
-<p>
-  tab-services works!
-  <br>
-  {{showData()}}
-</p>
+<div *ngFor="let column of getColumnsRange()" class="service-container-column">
+    <div *ngFor="let service of getServicesBatch(column)">
+        <div *ngIf="service.tags">
+            <div *ngFor="let tag of getServiceTags(service)">
+                <div *ngIf="getTagMetadata(service, tag); let tagMetadata">
+                    <bc-icon
+                        class="geo-icon"
+                        [name]="tagMetadata.icon || 'circle-thin'"
+                        size="s"
+                        [appUncheck]="!checkTagValue(tagMetadata, tag)"
+                    ></bc-icon>
+                    {{ tag.key | usertitlecase }}
+                    {{ getTagValue(tagMetadata, tag) | usertitlecase }}
+                </div>
+            </div>
+        </div>
+        <div class="service-container-divider"><app-divider></app-divider></div>
+    </div>
+</div>

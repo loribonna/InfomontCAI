@@ -12,5 +12,6 @@ export class TabGeoComponent extends TabItemBase {
 
   constructor(protected route: ActivatedRoute, protected cache: CacheService) {
     super(route, cache);
+    this._baseProperty = "location";
   }
 }

@@ -1,5 +1,24 @@
-<p>
-  tab-geo works!
-  <br>
-  {{showData()}}
-</p>
+<div class="geo-line">
+    <bc-icon class="geo-icon" data-name="circle-thin" size="s"></bc-icon>
+    Gruppo Montuoso: {{getProperty('massif') | titlecase}}
+</div>
+<div class="geo-line">
+    <bc-icon class="geo-icon" data-name="circle-thin" size="s"></bc-icon>
+    Valle: {{getProperty('valley') | titlecase}}
+</div>
+<div class="geo-line">
+    <bc-icon class="geo-icon" data-name="circle-thin" size="s"></bc-icon>
+    Quota: {{getProperty('altitude')}} m s.l.m.
+</div>
+<div class="geo-line">
+    <bc-icon class="geo-icon" data-name="circle-thin" size="s"></bc-icon>
+    Coordinate WGS84: {{getPropertyUnformatted('latitude') | number}}, {{getPropertyUnformatted('longitude') | number}}
+</div>
+<div class="geo-line">
+    <bc-icon class="geo-icon" data-name="circle-thin" size="s"></bc-icon>
+    Comprensorio sciistico: {{getProperty('ski_area') | titlecase}}
+</div>
+<div class="geo-line">
+    <bc-icon class="geo-icon" data-name="circle-thin" size="s"></bc-icon>
+    Zona tutelata: {{getProperty('protected_area') | titlecase}}
+</div>

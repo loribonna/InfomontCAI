@@ -4,10 +4,20 @@ import {
     ViewEncapsulation,
     ElementRef,
     Renderer2,
+    Directive
 } from '@angular/core';
 
 import { BcStyler } from '../shared/bc-styler';
 
+@Directive({
+    selector: "[appUncheck]",
+    host: {
+        '[class.uncheck]' : 'appUncheck'
+    }
+})
+export class UncheckIconDirective {
+    @Input() appUncheck = false;
+}
 @Component({
     selector: 'bc-icon',
     template: '',
@@ -22,6 +32,7 @@ import { BcStyler } from '../shared/bc-styler';
 export class BcIconComponent extends BcStyler {
     private _name: string;
     private _size: string;
+    private _style: string;
 
     constructor(elementRef: ElementRef, _renderer2: Renderer2) {
         super(elementRef, _renderer2);

@@ -5,6 +5,7 @@
 @import '../icon/icon.component.scss';
 @import '../button/button.component.scss';
 @import '../content/content.component.scss';
+@import '../divider/divider.component.scss';
 
 // Create a full theme.
 @mixin bc-theme($theme) {
@@ -14,4 +15,5 @@
   @include bc-icon-theme($theme);
   @include bc-button-theme($theme);
   @include bc-content-theme($theme);
+  @include bc-divider-theme($theme);
 }
