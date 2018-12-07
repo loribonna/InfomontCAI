@@ -2,7 +2,6 @@
 
 .service-container {
     display: flex;
-    color: $base-color;
 
     &-column {
         width: 50%;
@@ -12,4 +11,8 @@
         margin-left: 8%;
         margin-right: 8%;
     }
+}
+
+.serv-icon {
+    color: $base-color;
 }

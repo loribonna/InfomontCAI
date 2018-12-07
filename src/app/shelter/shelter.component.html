@@ -11,9 +11,9 @@
     <bc-content-section class="top">
         <div class="top-container">
             <div class="top-content top-content-data">
-                <div class="bc-h3">{{ getHeaderProperty('name') }}</div>
+                <div style="white-space: nowrap" class="bc-h3 shel-icon">{{ getHeaderProperty('name') }}</div>
                 <div class="bc-h5 top-content-data-line">
-                    <bc-icon style="margin: 0" data-name="map-marker"></bc-icon>
+                    <bc-icon style="margin: 0" class="shel-icon" data-name="map-marker"></bc-icon>
                     {{ getLocationProperty("massif", "valley") | titlecase }},
                     {{ getLocationProperty("locality") | titlecase }}
                     (

@@ -4,7 +4,7 @@
             <div *ngFor="let tag of getServiceTags(service)">
                 <div *ngIf="getTagMetadata(service, tag); let tagMetadata">
                     <bc-icon
-                        class="geo-icon"
+                        class="serv-icon"
                         [name]="tagMetadata.icon || 'circle-thin'"
                         size="s"
                         [appUncheck]="!checkTagValue(tagMetadata, tag)"
