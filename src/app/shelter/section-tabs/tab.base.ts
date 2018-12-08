@@ -1,8 +1,14 @@
-import { OnInit, OnDestroy } from "@angular/core";
+import { OnInit, OnDestroy, Input } from "@angular/core";
 import { CacheService } from "../../cache.service";
 import { ActivatedRoute } from "@angular/router";
 
 export abstract class TabItemBase implements OnInit, OnDestroy {
+    @Input()
+    set section(section: any) {
+        this._section = section;
+        this.initData();
+    }
+
     data: any;
     _section: string;
     _baseProperty: string;
@@ -48,13 +54,13 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        const sub = this.route.data.subscribe((d: any) => {
+        /*const sub = this.route.data.subscribe((d: any) => {
             this._section = d.section;
             this.initData();
             if (sub) {
                 sub.unsubscribe();
             }
-        });
+        });*/
     }
 
     ngOnDestroy() {}

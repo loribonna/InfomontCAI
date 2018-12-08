@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "InformontCAI": {
+    "InfomontCAI": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/InformontCAI",
+            "outputPath": "dist/InfomontCAI",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "InformontCAI:build"
+            "browserTarget": "InfomontCAI:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "InformontCAI:build:production"
+              "browserTarget": "InfomontCAI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "InformontCAI:build"
+            "browserTarget": "InfomontCAI:build"
           }
         },
         "test": {
@@ -110,7 +110,7 @@
         }
       }
     },
-    "InformontCAI-e2e": {
+    "InfomontCAI-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -119,11 +119,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "InformontCAI:serve"
+            "devServerTarget": "InfomontCAI:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "InformontCAI:serve:production"
+              "devServerTarget": "InfomontCAI:serve:production"
             }
           }
         },
@@ -139,5 +139,5 @@
       }
     }
   },
-  "defaultProject": "InformontCAI"
+  "defaultProject": "InfomontCAI"
 }

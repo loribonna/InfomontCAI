@@ -1,4 +1,11 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import {
+    Component,
+    OnInit,
+    OnDestroy,
+    ViewContainerRef,
+    ViewChild,
+    ComponentFactoryResolver
+} from "@angular/core";
 import { ITab } from "src/core/tabs-base/tabs-base.component";
 import { TabServicesComponent } from "./section-tabs/tab-services/tab-services.component";
 import { TabGeoComponent } from "./section-tabs/tab-geo/tab-geo.component";
@@ -9,6 +16,7 @@ import { TabOpeningsComponent } from "./section-tabs/tab-openings/tab-openings.c
 import { TabPropertyComponent } from "./section-tabs/tab-property/tab-property.component";
 import { merge, Subscription } from "rxjs";
 import { map } from "rxjs/operators";
+import { TabItemBase } from "./section-tabs/tab.base";
 
 export const TABS: ITab[] = [
     {
@@ -63,18 +71,31 @@ export function getDefaultRoute(tabs: ITab[] = TABS): any {
 @Component({
     selector: "app-shelter",
     templateUrl: "./shelter.component.html",
-    styleUrls: ["./shelter.component.scss"]
+    styleUrls: ["./shelter.component.scss"],
+    entryComponents: [
+        TabGeoComponent,
+        TabServicesComponent,
+        TabContactsComponent,
+        TabOpeningsComponent,
+        TabPropertyComponent
+    ]
 })
 export class ShelterComponent implements OnInit, OnDestroy {
     TABS: ITab[] = TABS;
+    activeTab: ITab = TABS.find(t => t.section === "geoData");
     _section = "geoData";
     _data: any;
     cacheSub: Subscription;
+
+    @ViewChild("dynItemView", { read: ViewContainerRef })
+    itemViewContainer: ViewContainerRef;
+
     constructor(
         private route: ActivatedRoute,
         private cache: CacheService,
-        private router: Router
-    ) { }
+        private router: Router,
+        private compFactory: ComponentFactoryResolver
+    ) {}
 
     getLink(link: string) {
         return [{ outlets: { tab: [link] } }];
@@ -93,7 +114,7 @@ export class ShelterComponent implements OnInit, OnDestroy {
                         obj[this._section] = data;
                         return obj;
                     })
-                ),
+                )
             ).subscribe(data => {
                 this._data = Object.assign({}, this._data, data);
             });
@@ -102,18 +123,21 @@ export class ShelterComponent implements OnInit, OnDestroy {
                 sub.unsubscribe();
             }
         });
-        if (!this.checkChildrenRouteOutlet()) {
-            this.router.navigate([getDefaultRoute()], { relativeTo: this.route });
-        }
+
+        this.loadComponent();
     }
 
-    checkChildrenRouteOutlet(): boolean {
-        return (
-            this.route.children &&
-            this.route.children.length === 1 &&
-            this.route.firstChild &&
-            this.route.firstChild.outlet === "tab"
-        );
+    loadComponent(tab = this.activeTab) {
+        const factory = this.compFactory.resolveComponentFactory(tab.component);
+        this.itemViewContainer.clear();
+
+        const component = this.itemViewContainer.createComponent(factory);
+        (<TabItemBase>component.instance).section = tab.section;
+    }
+
+    updateSection(tab: ITab) {
+        this.activeTab = tab;
+        this.loadComponent(tab);
     }
 
     getHeaderProperty(property: string) {
@@ -143,8 +167,6 @@ export class ShelterComponent implements OnInit, OnDestroy {
         }
         return "";
     }
-
-    updateSection(section: string) { }
 
     ngOnDestroy() {
         if (this.cacheSub) {
