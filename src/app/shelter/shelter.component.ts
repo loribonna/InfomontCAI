@@ -119,13 +119,13 @@ export class ShelterComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         const sub = this.route.params.subscribe(params => {
-            console.log(this.route);
             if (params["id"]) {
                 this.initData(params["id"]);
             } else {
-                console.log(window)
                 if ((<any>window).shelId) {
                     this.initData((<any>window).shelId);
+                } else if ((<any>window).idCai) {
+                    this.cache.getShelterByProperty('idCai', (<any>window).idCai)
                 }
             }
             if (sub) {

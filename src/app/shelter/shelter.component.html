@@ -12,7 +12,7 @@
     <bc-content-section class="top">
         <div class="top-container">
             <div class="top-content top-content-data">
-                <div style="white-space: nowrap" class="bc-h3 shel-icon">
+                <div style="white-space: nowrap" class="bc-h4 shel-icon">
                     {{ getHeaderProperty("name") }}
                 </div>
                 <div class="bc-h5 top-content-data-line">
@@ -22,11 +22,12 @@
                         data-name="map-marker"
                     ></bc-icon>
                     {{ getLocationProperty("massif", "valley") | titlecase }},
-                    {{ getLocationProperty("locality") | titlecase }} (
-                    {{ getLocationProperty("municipality") | titlecase }} -
-                    {{ getLocationProperty("province") | titlecase }} )
+                    {{ getLocationProperty("locality") | titlecase }} ({{
+                        getLocationProperty("municipality") | titlecase
+                    }}
+                    - {{ getLocationProperty("province") | uppercase }})
                 </div>
-                <div class="bc-h6" style="margin-left:1%">
+                <div class="bc-h6">
                     <div class="top-content-data-line">
                         Sezione: {{ getHeaderProperty("owner") }}
                     </div>

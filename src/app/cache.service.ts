@@ -73,6 +73,18 @@ export class CacheService {
         );
     }
 
+    private _insertImages(images: IImageData[]): void {
+        images.forEach(image => this.insertImage(image));
+    }
+
+    private _getImages(): IImageData[] {
+        return this.images;
+    }
+
+    getShelterByProperty(prop: string, value: string): Observable<object> {
+        return this.shelterService.getShelterByProperty(prop, value);
+    }
+
     loadShelterImages(shelId?: string): Observable<IImageData> {
         const cachedData = this._getImages();
         if (!cachedData) {
@@ -164,13 +176,5 @@ export class CacheService {
             this.images.push(image);
             this.insertImageSubject.next(image);
         }
-    }
-
-    private _insertImages(images: IImageData[]): void {
-        images.forEach(image => this.insertImage(image));
-    }
-
-    private _getImages(): IImageData[] {
-        return this.images;
     }
 }
