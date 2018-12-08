@@ -117,6 +117,37 @@ export class ShelterComponent implements OnInit, OnDestroy {
         });
     }
 
+    initFromProperty(prop, value) {
+        const cacheSub = this.cache
+            .getShelterByProperty(prop, value)
+            .subscribe((shel: any) => {
+                this.cache.setId(shel._id);
+                const shelSub = this.cache
+                    .loadShelterSection(this._section, shel._id)
+                    .pipe(
+                        map(data => {
+                            const obj = {};
+                            obj[this._section] = data;
+                            return obj;
+                        })
+                    )
+                    .subscribe(data => {
+                        this._data = Object.assign({}, this._data, data);
+                        if (shelSub) {
+                            shelSub.unsubscribe();
+                        }
+                    });
+                this._data = Object.assign({}, this._data, shel);
+                if (cacheSub) {
+                    cacheSub.unsubscribe();
+                }
+            });
+    }
+
+    to404() {
+        location.href = '/not-found';
+    }
+
     ngOnInit() {
         const sub = this.route.params.subscribe(params => {
             if (params["id"]) {
@@ -125,7 +156,11 @@ export class ShelterComponent implements OnInit, OnDestroy {
                 if ((<any>window).shelId) {
                     this.initData((<any>window).shelId);
                 } else if ((<any>window).idCai) {
-                    this.cache.getShelterByProperty('idCai', (<any>window).idCai)
+                    this.initFromProperty("idCai", (<any>window).idCai);
+                } else if ((<any>window).shelName) {
+                    this.initFromProperty("name", (<any>window).shelName);
+                } else {
+                    this.to404();
                 }
             }
             if (sub) {
