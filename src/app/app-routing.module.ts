@@ -6,7 +6,7 @@ import { ShelterComponent } from './shelter/shelter.component';
 
 const routes: Routes = [
   { path: ':id', component: ShelterComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: ShelterComponent }
 ];
 
 @NgModule({

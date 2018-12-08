@@ -101,24 +101,33 @@ export class ShelterComponent implements OnInit, OnDestroy {
         return [{ outlets: { tab: [link] } }];
     }
 
+    initData(shelId) {
+        this.cache.setId(shelId);
+        this.cacheSub = merge(
+            this.cache.loadShelterHeader(shelId),
+            this.cache.loadShelterSection(this._section, shelId).pipe(
+                map(data => {
+                    const obj = {};
+                    obj[this._section] = data;
+                    return obj;
+                })
+            )
+        ).subscribe(data => {
+            this._data = Object.assign({}, this._data, data);
+        });
+    }
+
     ngOnInit() {
         const sub = this.route.params.subscribe(params => {
-            const shelId = params["id"];
-
-            this.cache.setId(shelId);
-            this.cacheSub = merge(
-                this.cache.loadShelterHeader(shelId),
-                this.cache.loadShelterSection(this._section, shelId).pipe(
-                    map(data => {
-                        const obj = {};
-                        obj[this._section] = data;
-                        return obj;
-                    })
-                )
-            ).subscribe(data => {
-                this._data = Object.assign({}, this._data, data);
-            });
-
+            console.log(this.route);
+            if (params["id"]) {
+                this.initData(params["id"]);
+            } else {
+                console.log(window)
+                if ((<any>window).shelId) {
+                    this.initData((<any>window).shelId);
+                }
+            }
             if (sub) {
                 sub.unsubscribe();
             }

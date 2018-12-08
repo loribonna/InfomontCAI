@@ -8,16 +8,18 @@
 </head>
 <body>
     <script>
+        var target = 'http://localhost:4200';
         function openLink(shelId) {
-            console.log("A")
-            var features = '';
-            var newWindow = window.open(shelId, "popup", features);
+            var features = 'height=550,width=800,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes';
+            var newWindow = window.open(target, 'popUpWindow', features);
+            newWindow.shelId = shelId;
+            newWindow.window.shelId = shelId;
             if(window.focus) {
                 newWindow.focus();
             }
         }
     </script>
-    <button onclick="openLink('59c57aa289bf531d741f2720')">Link to popup</button>
+    <button onclick="openLink('59c57aa289bf531d741f2720')"">Open Shelter</button>
 
 </body>
 </html>
