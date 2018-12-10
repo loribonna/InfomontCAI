@@ -16,7 +16,7 @@ app.get("/base", function(req, res) {
     res.sendFile(path.join(__dirname + "/main.html"));
 });
 
-app.get("/*", function(req, res){
+app.get("/target", function(req, res){
     res.sendFile(path.join(__dirname + "/dist/InfomontCAI/index.html"))
 })
 
