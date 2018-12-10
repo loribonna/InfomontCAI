@@ -9,18 +9,35 @@
 <body>
     <script>
         var target = 'http://localhost:4200';
-        function openLink(shelId) {
+        function openShelId(shelId) {
             var features = 'height=550,width=800,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes';
             var newWindow = window.open(target, 'popUpWindow', features);
             newWindow.shelId = shelId;
-            //newWindow.idCai = 921200501;
-            //newWindow.shelName = 'SELLA QUINTINO (NUOVO e vecchio)'
+            if(window.focus) {
+                newWindow.focus();
+            }
+        }
+        function openCaiID(idCai) {
+            var features = 'height=550,width=800,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes';
+            var newWindow = window.open(target, 'popUpWindow', features);
+            newWindow.idCai = idCai;
+            if(window.focus) {
+                newWindow.focus();
+            }
+        }
+        function openName(shelName) {
+            var features = 'height=550,width=800,left=100,top=100,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes';
+            var newWindow = window.open(target, 'popUpWindow', features);
+            newWindow.shelName = shelName
             if(window.focus) {
                 newWindow.focus();
             }
         }
     </script>
-    <button onclick="openLink('59c57aa289bf531d741f2720')"">Open Shelter</button>
-
+    <button onclick="openShelId('59c57aa389bf531d741f28f7')"">Open Shelter 59c57aa389bf531d741f28f7: COMO</button><br>
+    <button onclick="openShelId('59c57aa389bf531d741f2ac8')"">Open Shelter 59c57aa389bf531d741f2ac8: AL CEDO</button><br>
+    <button onclick="openCaiID('921200201')"">Open Shelter (idCai) 921200201: GIORDANO FELICE</button><br>
+    <button onclick="openName('ALPE HELO')"">Open Shelter ALPE HELO</button><br>
+    <button onclick="openShelId('59c57aa489bf531d741f2c77')"">Open Shelter 59c57aa489bf531d741f2c77: ALPINISTI MONZESI</button><br>
 </body>
 </html>
