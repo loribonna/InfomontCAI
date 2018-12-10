@@ -8,6 +8,10 @@ const app = express();
 app.use(express.static(__dirname + "/dist/InfomontCAI"));
 app.use(express.static(__dirname + "/main.html"));
 
+app.get("/", function(req, res) {
+    res.redirect('/base');
+});
+
 app.get("/base", function(req, res) {
     res.sendFile(path.join(__dirname + "/main.html"));
 });
@@ -17,4 +21,4 @@ app.get("/*", function(req, res){
 })
 
 // Start the app by listening on the default Heroku port
-app.listen(4200);
+app.listen(process.env.PORT);
