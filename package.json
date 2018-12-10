@@ -1,9 +1,15 @@
 {
   "name": "informont-cai",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "config": "ts-node ./scripts/env-config.ts",
+    "postinstall": "npm run config -- --environment=dev && npm run build",
+    "start": "node index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -23,6 +29,8 @@
     "@angular/router": "~7.0.0",
     "buffer": "^5.2.1",
     "core-js": "^2.5.4",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
@@ -31,9 +39,9 @@
     "@angular/cli": "~7.0.4",
     "@angular/compiler-cli": "~7.0.0",
     "@angular/language-service": "~7.0.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
