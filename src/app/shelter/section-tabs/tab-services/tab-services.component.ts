@@ -188,7 +188,7 @@ export class TabServicesComponent extends TabItemBase {
     }
 
     getTagMetadata(service, tag): ServiceTag {
-        const entry = getServiceBaseEntry(service.name, tag.key);
+        const entry = getServiceBaseEntry(service.name || service.category, tag.key);
         return entry && !entry.hidden ? entry : null;
     }
 
