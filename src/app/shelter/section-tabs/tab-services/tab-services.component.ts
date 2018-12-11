@@ -131,7 +131,7 @@ function getServiceBaseEntry(service: string, entry: string) {
     const baseService = serviceBaseList.find(
         serv => serv.serviceName === service
     );
-    return baseService.tags.find(tag => tag.name === entry);
+    return baseService && baseService.tags && baseService.tags.find(tag => tag.name === entry);
 }
 
 const SERVICE_COLUMNS = 2;
