@@ -166,3 +166,11 @@ $bc-button-active-opacity: 0.25;
     @include bc-typography-scale-to-styles(bc-typographic-scale(), "button-sm");
   }
 }
+
+@media screen and (max-width: 700px) {
+    .bc-button {
+        min-width: 10vw;
+        padding: 0px 1vw;
+        height: 5vw;
+    }
+}
