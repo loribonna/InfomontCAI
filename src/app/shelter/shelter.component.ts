@@ -145,7 +145,7 @@ export class ShelterComponent implements OnInit, OnDestroy {
     }
 
     to404() {
-        location.href = '/not-found';
+        location.href = "/not-found";
     }
 
     ngOnInit() {
@@ -167,7 +167,6 @@ export class ShelterComponent implements OnInit, OnDestroy {
                 }
             });
         }
-
 
         this.loadComponent();
     }

@@ -53,7 +53,7 @@ export class ShelterService {
 
     getFile(id): Observable<IImage> {
         const headers = new HttpHeaders({
-            "Authorization": versions.BACKEND_AUTH
+            Authorization: versions.BACKEND_AUTH
         });
 
         return this.http
@@ -66,7 +66,7 @@ export class ShelterService {
     getShelter(id: String, header?): Observable<object> {
         const params = header ? { header: header } : null;
         const headers = new HttpHeaders({
-            "Authorization": versions.BACKEND_AUTH
+            Authorization: versions.BACKEND_AUTH
         });
 
         return this.http
@@ -79,7 +79,7 @@ export class ShelterService {
 
     getShelterSection(id: String, section: string): Observable<object> {
         const headers = new HttpHeaders({
-            "Authorization": versions.BACKEND_AUTH
+            Authorization: versions.BACKEND_AUTH
         });
 
         return this.http
@@ -98,7 +98,7 @@ export class ShelterService {
             return this.handleError("Only base property allowed");
         }
         const headers = new HttpHeaders({
-            "Authorization": versions.BACKEND_AUTH
+            Authorization: versions.BACKEND_AUTH
         });
 
         return this.http
@@ -121,7 +121,7 @@ export class ShelterService {
             query = query.substring(0, query.length - 1);
         }
         const headers = new HttpHeaders({
-            "Authorization": versions.BACKEND_AUTH
+            Authorization: versions.BACKEND_AUTH
         });
 
         return this.http

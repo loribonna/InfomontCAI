@@ -1,6 +1,6 @@
 <div *ngFor="let column of getColumnsRange()" class="service-container-column">
     <div *ngFor="let service of getServicesBatch(column)">
-        <div *ngIf="service.tags">
+        <div *ngIf="checkTags(service)">
             <div *ngFor="let tag of getServiceTags(service)">
                 <div *ngIf="getTagMetadata(service, tag); let tagMetadata">
                     <bc-icon
@@ -13,7 +13,7 @@
                     {{ getTagValue(tagMetadata, tag) | usertitlecase }}
                 </div>
             </div>
+            <div class="service-container-divider"><app-divider></app-divider></div>
         </div>
-        <div class="service-container-divider"><app-divider></app-divider></div>
     </div>
 </div>

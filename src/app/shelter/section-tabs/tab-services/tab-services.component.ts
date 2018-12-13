@@ -218,4 +218,8 @@ export class TabServicesComponent extends TabItemBase {
             }
         }
     }
+
+    checkTags(service: any) {
+        return service && service.tags && service.tags.length;
+    }
 }

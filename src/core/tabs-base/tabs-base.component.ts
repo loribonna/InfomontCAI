@@ -6,7 +6,8 @@ import {
     OnDestroy,
     Output,
     EventEmitter,
-    Input
+    Input,
+    ViewEncapsulation
 } from "@angular/core";
 import { TabItemComponent, TabItemService } from "./tabItem/tabItem.component";
 import { Subscription } from "rxjs";
@@ -24,10 +25,12 @@ export interface ITab {
 @Component({
     selector: "app-tabs-base",
     host: {
-        role: "tabs-base"
+        role: "tabs-base",
+        '[class.tabs-base]': 'true'
     },
     templateUrl: "./tabs-base.component.html",
-    styleUrls: ["./tabs-base.component.scss"]
+    styleUrls: ["./tabs-base.component.scss"],
+    encapsulation: ViewEncapsulation.None
 })
 export class TabsBaseComponent implements OnInit, OnDestroy {
     _selectedItemID: number;

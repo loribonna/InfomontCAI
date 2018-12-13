@@ -32,7 +32,9 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
         const cacheSub = this.cache
             .loadShelterSection(section)
             .subscribe(data => {
-                this.data[section] = data;
+                this.data
+                    ? (this.data[section] = data)
+                    : (this.data = { [section]: data });
                 if (cacheSub) {
                     cacheSub.unsubscribe();
                 }
@@ -67,9 +69,7 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
 
     getPropertyUnformatted(prop) {
         if (this._baseProperty) {
-            return this._resolveProperty(
-                this._baseProperty + "." + prop
-            );
+            return this._resolveProperty(this._baseProperty + "." + prop);
         } else {
             return this._resolveProperty(prop);
         }

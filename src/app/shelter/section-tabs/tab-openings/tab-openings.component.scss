@@ -1,6 +1,11 @@
-@import '../../../../core/style/typography.scss';
+@import '../tab.base.scss';
 
 .opening {
+    &-container {
+        min-height: $container-box-min-heigth;
+        display: block;
+    }
+
     &-line {
         display: flex;
         flex-direction: row;

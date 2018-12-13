@@ -39,6 +39,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Enviroment variables
-.env
+# Enviroment
 src/environments/versions.*
+.env

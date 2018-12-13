@@ -1,0 +1,4 @@
+@import "../../../../core/style/typography.scss";
+@include bc-typography();
+
+$container-box-min-heigth: 8vh;
