@@ -1,8 +1,10 @@
-@import "../../../../core/style/typography.scss";
-
-@include bc-typography();
+@import '../tab.base.scss';
 
 .geo {
+    &-container {
+        min-height: $container-box-min-heigth;
+    }
+
     &-line {
         display: flex;
         flex-direction: row;
