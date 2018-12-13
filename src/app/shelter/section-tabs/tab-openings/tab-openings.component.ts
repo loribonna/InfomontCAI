@@ -1,14 +1,16 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { CacheService } from "src/app/cache.service";
 import { TabItemBase } from "../tab.base";
 
-
-
 @Component({
     selector: "app-tab-openings",
+    host: {
+        "[class.opening-container]": "true"
+    },
     templateUrl: "./tab-openings.component.html",
-    styleUrls: ["./tab-openings.component.scss"]
+    styleUrls: ["./tab-openings.component.scss"],
+    encapsulation: ViewEncapsulation.None
 })
 export class TabOpeningsComponent extends TabItemBase {
     constructor(

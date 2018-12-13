@@ -1,6 +1,4 @@
-@import "../../../../core/style/typography.scss";
-
-@include bc-typography();
+@import '../tab.base.scss';
 
 .contact {
     &-line {

@@ -1,8 +1,9 @@
 @import '../../../../core/style/typography.scss';
+@import '../tab.base.scss';
 
 .service-container {
     display: flex;
-
+    min-height: $container-box-min-heigth;
     &-column {
         width: 50%;
     }

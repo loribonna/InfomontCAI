@@ -1,4 +1,4 @@
-@import '../../../../core/style/typography.scss';
+@import '../tab.base.scss';
 
 .property {
     &-line {
@@ -20,6 +20,7 @@
 }
 
 .container {
+    min-height: $container-box-min-heigth;
     margin: 0.1%;
     width: 50%;
 }
