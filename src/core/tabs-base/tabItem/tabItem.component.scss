@@ -1,9 +1,10 @@
+$font-size: 20px;
 
 @mixin tab-item($theme) {
     .tab-item-header {
         $foreground: map-get($theme, foreground);
 
-        font-size:20px;
+        font-size: $font-size;
         padding-right: 2%;
         border: 1px solid bc-color($foreground, hint-text);
         border-bottom: 1px solid transparent;
@@ -11,13 +12,19 @@
         margin: 0;
         user-select: none;
 
-        &:hover{
+        &:hover {
             color: bc-color($accent);
             cursor: pointer;
         }
     }
 
-    .active{
+    .active {
         color: bc-color($accent);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .tab-item-header {
+        font-size: 2.5vw;
     }
 }
