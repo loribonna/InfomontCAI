@@ -145,28 +145,28 @@ export class ShelterComponent implements OnInit, OnDestroy {
     }
 
     to404() {
-        location.href = '/not-found';
+        location.href = "/not-found";
     }
 
     ngOnInit() {
-        const sub = this.route.params.subscribe(params => {
-            if (params["id"]) {
-                this.initData(params["id"]);
-            } else {
-                if ((<any>window).shelId) {
-                    this.initData((<any>window).shelId);
-                } else if ((<any>window).idCai) {
-                    this.initFromProperty("idCai", (<any>window).idCai);
-                } else if ((<any>window).shelName) {
-                    this.initFromProperty("name", (<any>window).shelName);
+        if ((<any>window).shelId) {
+            this.initData((<any>window).shelId);
+        } else if ((<any>window).idCai) {
+            this.initFromProperty("idCai", (<any>window).idCai);
+        } else if ((<any>window).shelName) {
+            this.initFromProperty("name", (<any>window).shelName);
+        } else {
+            const sub = this.route.params.subscribe(params => {
+                if (params["id"]) {
+                    this.initData(params["id"]);
                 } else {
                     this.to404();
                 }
-            }
-            if (sub) {
-                sub.unsubscribe();
-            }
-        });
+                if (sub) {
+                    sub.unsubscribe();
+                }
+            });
+        }
 
         this.loadComponent();
     }
