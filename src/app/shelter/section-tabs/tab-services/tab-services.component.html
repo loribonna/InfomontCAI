@@ -3,11 +3,13 @@
         <div *ngIf="checkTags(service)">
             <div *ngFor="let tag of getServiceTags(service)">
                 <div *ngIf="getTagMetadata(service, tag); let tagMetadata">
-                    <span *ngIf="tagMetadata.icon">
-                        <bc-icon class="serv-icon" [name]="tagMetadata.icon || 'circle'" size="xs" [appUncheck]="!checkTagValue(tagMetadata, tag)"></bc-icon>
-                    </span>
-                    <span *ngIf="!tagMetadata.icon">
-                        <bc-icon class="dot" name="circle"></bc-icon>
+                    <span *ngIf="checkTagValue(tagMetadata, tag)">
+                        <span *ngIf="tagMetadata.icon">
+                            <bc-icon class="serv-icon" [name]="tagMetadata.icon" size="xs"></bc-icon>
+                        </span>
+                        <span *ngIf="!tagMetadata.icon">
+                            <bc-icon class="dot" name="circle"></bc-icon>
+                        </span>
                     </span>
                     {{ tag.key | usertitlecase }}
                     {{ getTagValue(tagMetadata, tag) | usertitlecase }}
