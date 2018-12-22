@@ -5,8 +5,18 @@
 $content-base-margin: 10px;
 $image-box-width: 25%;
 
-.shel-icon {
-    color: $base-color;
+.shel {
+    &-name {
+        font-size: 22px;
+        line-height: 28px;
+        color: $base-color;
+    }
+
+    &-icon {
+        color: $base-color;
+        margin: 0;
+        margin-left: -4px;
+    }
 }
 
 .container {

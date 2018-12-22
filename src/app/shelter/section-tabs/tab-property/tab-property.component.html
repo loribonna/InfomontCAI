@@ -1,77 +1,44 @@
-<div class="container">
-    <div class="property" *ngIf="getOwner(); let owner">
-        <div class="property-line">
-            <bc-icon
-                class="property-icon"
-                data-name="circle-thin"
-                size="xs"
-            ></bc-icon>
-            Ente: {{ owner.name || "---" }}
-        </div>
-        <div class="property-line">
-            <bc-icon
-                class="property-icon"
-                data-name="circle-thin"
-                size="xs"
-            ></bc-icon>
-            Telefono: {{ owner.fixedPhone || "---" }}
-        </div>
-        <div class="property-line">
-            <bc-icon
-                class="property-icon"
-                data-name="circle-thin"
-                size="xs"
-            ></bc-icon>
-            Mail: {{ owner.email || "---" }}
-        </div>
-        <div class="property-line">
-            <bc-icon
-                class="property-icon"
-                data-name="circle-thin"
-                size="xs"
-            ></bc-icon>
-            Sito Web: {{ owner.webSite || "---" }}
-        </div>
-        <div class="property-divider"><app-divider></app-divider></div>
+<div *ngIf="getOwner(); let owner">
+    <div class="prop-line">
+        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        Ente: {{ owner.name || "---" }}
     </div>
-    <div>
-        <div class="property-line">
-            <bc-icon
-                class="serv-icon"
-                name="key"
-                size="xs"
-                [appUncheck]="!getPropertyUnformatted('pickupKey')"
-            ></bc-icon>
-            Ritiro chiavi
-        </div>
-        <div class="property-line">
-            <bc-icon
-                class="serv-icon"
-                name="users"
-                size="xs"
-                [appUncheck]="!getPropertyUnformatted('self_management')"
-            ></bc-icon>
-            Autogestione
-        </div>
-        <div class="property-divider"><app-divider></app-divider></div>
+    <div class="prop-line">
+        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        Telefono: {{ owner.fixedPhone || "---" }}
     </div>
-    <div>
-        <div class="property-line">
-            <bc-icon
-                class="property-icon"
-                data-name="circle-thin"
-                size="xs"
-            ></bc-icon>
-            Anno di costruzione: {{ getCatastalProp('buildYear') }}
-        </div>
-        <div class="property-line">
-            <bc-icon
-                class="serv-icon"
-                name="users"
-                size="xs"
-                [appUncheck]="!getCatastalProp('ISO14001')"
-            ></bc-icon>
-            Certificazione ISO 14001
-        </div>
+    <div class="prop-line">
+        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        Mail: {{ owner.email || "---" }}
+    </div>
+    <div class="prop-line">
+        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        Sito Web: {{ owner.webSite || "---" }}
+    </div>
+    <div class="prop-divider">
+        <app-divider></app-divider>
+    </div>
+</div>
+<div>
+    <div class="prop-line">
+        <bc-icon class="serv-icon" name="key" size="xs" [appUncheck]="!getPropertyUnformatted('pickupKey')"></bc-icon>
+        Ritiro chiavi
+    </div>
+    <div class="prop-line">
+        <bc-icon class="serv-icon" name="users" size="xs" [appUncheck]="!getPropertyUnformatted('self_management')"></bc-icon>
+        Autogestione
+    </div>
+    <div class="prop-divider">
+        <app-divider></app-divider>
+    </div>
+</div>
+<div>
+    <div class="prop-line">
+        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        Anno di costruzione: {{ getCatastalProp('buildYear') }}
+    </div>
+    <div class="prop-line">
+        <bc-icon class="serv-icon" name="users" size="xs" [appUncheck]="!getCatastalProp('ISO14001')"></bc-icon>
+        Certificazione ISO 14001
     </div>
 </div>

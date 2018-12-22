@@ -2,6 +2,7 @@
 @import '../tab.base.scss';
 
 .service-container {
+    margin: $container-margin;
     display: flex;
     min-height: $container-box-min-heigth;
     &-column {

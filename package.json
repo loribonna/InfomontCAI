@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "postinstall": "npm run config && npm run build:prod",
     "config": "ts-node ./scripts/env-config.ts",
     "start": "node ./index.js",
     "build": "ng build",
+    "build:watch": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

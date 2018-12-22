@@ -10,4 +10,10 @@
     &-icon {
         color: $base-color;
     }
+
+    &-container {
+        margin: $container-margin;
+        min-height: $container-box-min-heigth;
+        display: block;
+    }
 }
