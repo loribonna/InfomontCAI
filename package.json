@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "config": "ts-node ./scripts/env-config.ts",
-    "start": "ng serve",
+    "start": "node ./index.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
