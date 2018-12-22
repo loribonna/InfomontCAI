@@ -2,7 +2,9 @@
 
 .geo {
     &-container {
+        margin: $container-margin;
         min-height: $container-box-min-heigth;
+        display: block;
     }
 
     &-line {
@@ -13,5 +15,12 @@
 
     &-icon {
         color: $base-color;
+    }
+
+    &-multiline {
+        margin-top: 3px;
+        font-weight: 400;
+        line-height: 1.3;
+        text-align: justify;
     }
 }

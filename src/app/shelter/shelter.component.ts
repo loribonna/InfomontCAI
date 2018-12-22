@@ -95,7 +95,7 @@ export class ShelterComponent implements OnInit, OnDestroy {
         private cache: CacheService,
         private router: Router,
         private compFactory: ComponentFactoryResolver
-    ) {}
+    ) { }
 
     getLink(link: string) {
         return [{ outlets: { tab: [link] } }];
@@ -210,6 +210,14 @@ export class ShelterComponent implements OnInit, OnDestroy {
             }
         }
         return "";
+    }
+
+    getLocationPropertyFormatted(property: string, format: string) {
+        const val = this.getLocationProperty(property);
+        if (val) {
+            return val + format;
+        }
+        return null;
     }
 
     ngOnDestroy() {

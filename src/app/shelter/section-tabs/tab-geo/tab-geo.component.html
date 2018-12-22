@@ -1,24 +1,13 @@
-<div class="geo-line">
-    <bc-icon class="geo-icon" data-name="circle-thin" size="xs"></bc-icon>
-    Gruppo Montuoso: {{getProperty('massif') | titlecase}}
+<div class="geo-multiline">
+    In località {{getPropertyUnformatted('locality') | titlecase}}, {{getPropertyUnformatted('massif') | titlecase}}
+    {{getPropertyUnformatted('valley') | titlecase}}
 </div>
-<div class="geo-line">
-    <bc-icon class="geo-icon" data-name="circle-thin" size="xs"></bc-icon>
-    Valle: {{getProperty('valley') | titlecase}}
+<div class="geo-multiline">
+    {{getPropertyUnformatted('site')}}
 </div>
-<div class="geo-line">
-    <bc-icon class="geo-icon" data-name="circle-thin" size="xs"></bc-icon>
-    Quota: {{getProperty('altitude')}} m s.l.m.
-</div>
-<div class="geo-line">
-    <bc-icon class="geo-icon" data-name="circle-thin" size="xs"></bc-icon>
-    Coordinate WGS84: {{getPropertyUnformatted('latitude') | number}}, {{getPropertyUnformatted('longitude') | number}}
-</div>
-<div class="geo-line">
-    <bc-icon class="geo-icon" data-name="circle-thin" size="xs"></bc-icon>
-    Comprensorio sciistico: {{getProperty('ski_area') | titlecase}}
-</div>
-<div class="geo-line">
-    <bc-icon class="geo-icon" data-name="circle-thin" size="xs"></bc-icon>
-    Zona tutelata: {{getProperty('protected_area') | titlecase}}
+<div *ngIf="getPropertyUnformatted('ski_area') || getPropertyUnformatted('protected_area')" class="geo-multiline">
+    In area:<br>
+    <span>{{getPropertyUnformatted('protected_area') | titlecase}}</span>
+    <span *ngIf="getPropertyUnformatted('ski_area') && getPropertyUnformatted('protected_area')">, nel</span>
+    <span>{{getPropertyUnformatted('ski_area') | titlecase}}</span>
 </div>

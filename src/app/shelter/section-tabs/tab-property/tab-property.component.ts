@@ -6,7 +6,7 @@ import { TabItemBase } from "../tab.base";
 @Component({
     selector: "app-tab-property",
     host: {
-        "[class.container]": "true"
+        "[class.prop-container]": "true"
     },
     templateUrl: "./tab-property.component.html",
     styleUrls: ["./tab-property.component.scss"],

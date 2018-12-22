@@ -1,6 +1,6 @@
 @import '../tab.base.scss';
 
-.property {
+.prop {
     &-line {
         display: flex;
         flex-direction: row;
@@ -17,10 +17,11 @@
         margin-left: 2%;
         margin-right: 8%;
     }
-}
 
-.container {
-    min-height: $container-box-min-heigth;
-    margin: 0.1%;
-    width: 50%;
+    &-container {
+        margin: $container-margin;
+        min-height: $container-box-min-heigth;
+        display: block;
+        width: 50%;
+    }
 }
