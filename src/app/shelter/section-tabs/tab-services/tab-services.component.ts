@@ -36,7 +36,7 @@ const serviceBaseList: ServiceEntry[] = [
     {
         serviceName: "ristorazione",
         tags: [
-            { name: "ristorante", type: "boolean", icon: "cutlery" },
+            { name: "ristorante", type: "boolean", icon: "utensils" },
             { name: "accesso_alla_cucina", type: "boolean", icon: "user" }
         ]
     },

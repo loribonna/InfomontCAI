@@ -3,3 +3,12 @@
 
 $container-box-min-heigth: 8vh;
 $container-margin: 1%;
+
+.dot {
+    margin: 0;
+    height: 6px;
+    font-size: 6px;
+    width: 30px;
+    align-items: center;
+    vertical-align: middle;
+}

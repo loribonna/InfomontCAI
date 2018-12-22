@@ -1,18 +1,18 @@
 <div *ngIf="getOwner(); let owner">
     <div class="prop-line">
-        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Ente: {{ owner.name || "---" }}
     </div>
     <div class="prop-line">
-        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Telefono: {{ owner.fixedPhone || "---" }}
     </div>
     <div class="prop-line">
-        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Mail: {{ owner.email || "---" }}
     </div>
     <div class="prop-line">
-        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Sito Web: {{ owner.webSite || "---" }}
     </div>
     <div class="prop-divider">
@@ -21,11 +21,11 @@
 </div>
 <div>
     <div class="prop-line">
-        <bc-icon class="serv-icon" name="key" size="xs" [appUncheck]="!getPropertyUnformatted('pickupKey')"></bc-icon>
+        <bc-icon class="prop-icon" name="key" size="xs" [appUncheck]="!getPropertyUnformatted('pickupKey')"></bc-icon>
         Ritiro chiavi
     </div>
     <div class="prop-line">
-        <bc-icon class="serv-icon" name="users" size="xs" [appUncheck]="!getPropertyUnformatted('self_management')"></bc-icon>
+        <bc-icon class="prop-icon" name="users" size="xs" [appUncheck]="!getPropertyUnformatted('self_management')"></bc-icon>
         Autogestione
     </div>
     <div class="prop-divider">
@@ -34,11 +34,11 @@
 </div>
 <div>
     <div class="prop-line">
-        <bc-icon class="prop-icon" data-name="circle-thin" size="xs"></bc-icon>
+        <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Anno di costruzione: {{ getCatastalProp('buildYear') }}
     </div>
     <div class="prop-line">
-        <bc-icon class="serv-icon" name="users" size="xs" [appUncheck]="!getCatastalProp('ISO14001')"></bc-icon>
+        <bc-icon class="prop-icon" name="certificate" size="xs" [appUncheck]="!getCatastalProp('ISO14001')"></bc-icon>
         Certificazione ISO 14001
     </div>
 </div>
