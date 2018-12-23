@@ -10,10 +10,10 @@
     <bc-content-section class="top">
         <div class="top-container">
             <div class="top-content top-content-data">
-                <div style="white-space: nowrap" class="bc-h4 shel-name">
+                <div style="white-space: nowrap" class="bc-h5 shel-name">
                     {{ getHeaderProperty("name") }}
                 </div>
-                <div class="bc-h5 top-content-data-line">
+                <div class="bc-h6 shel-subname top-content-data-line">
                     <bc-icon class="shel-icon" data-name="map-marker-alt"></bc-icon>
                     {{ getLocationProperty("locality") | titlecase }}
                 </div>
@@ -23,10 +23,10 @@
                         {{getLocationPropertyFormatted("altitude", "m")}})
                     </div>
                     <div class="top-content-data-line">
-                        {{ getHeaderProperty("type") }}
+                        Sezione {{ getHeaderProperty("owner") }}
                     </div>
                     <div class="top-content-data-line">
-                        Sezione {{ getHeaderProperty("owner") }}
+                        {{ getHeaderProperty("type") }}
                     </div>
                     <div class="top-content-data-line">
                         Categoria: {{ getHeaderProperty("category") || "-" }}
