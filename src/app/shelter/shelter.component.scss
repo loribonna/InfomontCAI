@@ -7,15 +7,20 @@ $image-box-width: 25%;
 
 .shel {
     &-name {
-        font-size: 22px;
-        line-height: 28px;
+        font-weight: 400;
         color: $base-color;
+    }
+
+    &-subname {
+        font-size: 18px;
+
     }
 
     &-icon {
         color: $base-color;
         margin: 0;
         margin-left: -2px;
+        vertical-align: middle;
     }
 }
 
