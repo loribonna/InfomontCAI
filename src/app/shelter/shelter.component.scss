@@ -9,10 +9,12 @@ $image-box-width: 25%;
     &-name {
         font-weight: 400;
         color: $base-color;
+        line-height: 1.6;
     }
 
     &-subname {
         font-size: 18px;
+        line-height: 1.6;
     }
 
     &-icon {

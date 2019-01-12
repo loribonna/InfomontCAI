@@ -7,8 +7,10 @@ interface ServiceTag {
     name: string;
     type: string;
     icon: string;
-    hidden?: boolean;
     combined?: string;
+    enabled: boolean;
+    alias?: string;
+    iconColor?: string;
 }
 
 interface ServiceEntry {
@@ -20,58 +22,60 @@ const serviceBaseList: ServiceEntry[] = [
     {
         serviceName: "pernottamento",
         tags: [
-            { name: "camerate_da_4_posti", type: "number", icon: "" },
-            { name: "camerate_da_6_posti", type: "number", icon: "" },
-            { name: "posti_letto", type: "number", icon: "bed" },
+            { name: "camerate_da_4_posti", type: "number", icon: "", enabled: false },
+            { name: "camerate_da_6_posti", type: "number", icon: "", enabled: false },
+            { name: "posti_letto", type: "number", icon: "bed", enabled: true },
             {
                 name: "posti_letto_invernali",
                 type: "number",
-                icon: "snowflake"
+                icon: "snowflake",
+                enabled: false
             },
-            { name: "tavolati", type: "number", icon: "", hidden: true },
-            { name: "posti_totali", type: "number", icon: "", hidden: true },
-            { name: "vendita_sacco_lenzuolo", type: "boolean", icon: "" }
+            { name: "tavolati", type: "number", icon: "", enabled: false },
+            { name: "posti_totali", type: "number", icon: "", enabled: false },
+            { name: "vendita_sacco_lenzuolo", type: "boolean", icon: "box", enabled: true }
         ]
     },
     {
         serviceName: "ristorazione",
         tags: [
-            { name: "ristorante", type: "boolean", icon: "utensils" },
-            { name: "accesso_alla_cucina", type: "boolean", icon: "user" }
+            { name: "ristorante", type: "boolean", icon: "utensils", enabled: true },
+            { name: "accesso_alla_cucina", type: "boolean", icon: "utensil-spoon", enabled: true }
         ]
     },
     {
         serviceName: "acqua",
         tags: [
-            { name: "acqua_in_rifugio", type: "boolean", icon: "tint" },
-            { name: "acqua_calda", type: "boolean", icon: "" }
+            { name: "acqua_in_rifugio", type: "boolean", icon: "tint", enabled: true },
+            { name: "acqua_calda", type: "boolean", icon: "tint", iconColor: "red", enabled: true, alias: "Acqua calda in rifugio" }
         ]
     },
     {
         serviceName: "servizi_igenici",
         tags: [
-            { name: "docce", type: "number", icon: "shower" },
-            { name: "WC_in_camera", type: "number", icon: "" },
-            { name: "WC_uso_comune", type: "number", icon: "" }
+            { name: "docce", type: "number", icon: "shower", enabled: true },
+            { name: "WC_in_camera", type: "number", icon: "", enabled: false },
+            { name: "WC_uso_comune", type: "number", icon: "", enabled: false }
         ]
     },
     {
         serviceName: "elettricità",
         tags: [
-            { name: "elettricità", type: "boolean", icon: "bolt" },
-            { name: "punti_ricarica_camere", type: "number", icon: "" },
-            { name: "punti_ricarica_spazi_comuni", type: "number", icon: "" }
+            { name: "elettricità", type: "boolean", icon: "bolt", enabled: true, alias: "Elettricità in rifugio" },
+            { name: "punti_ricarica_camere", type: "number", icon: "plug", enabled: true, alias: "Punti ricarica", combined: 'punti_ricarica_spazi_comuni' },
+            { name: "punti_ricarica_spazi_comuni", type: "number", icon: "", enabled: false }
         ]
     },
     {
         serviceName: "WIFI_e_GSM",
         tags: [
-            { name: "WIFI", type: "boolean", icon: "wifi" },
-            { name: "segnale_GSM", type: "boolean", icon: "signal" },
+            { name: "WIFI", type: "boolean", icon: "wifi", enabled: true, alias: "WIFI disponibile" },
+            { name: "segnale_GSM", type: "boolean", icon: "signal", enabled: true },
             {
                 name: "gestore_telefonia_mobile",
                 type: "string",
-                icon: ""
+                icon: "",
+                enabled: false
             }
         ]
     },
@@ -81,47 +85,55 @@ const serviceBaseList: ServiceEntry[] = [
             {
                 name: "accessibilità_ai_disabili",
                 type: "boolean",
-                icon: "wheelchair"
+                icon: "wheelchair",
+                enabled: true,
+                alias: "Accessibilità"
             },
             {
                 name: "servizi_igienici_per_disabili",
                 type: "boolean",
-                icon: ""
+                icon: "",
+                enabled: false
             },
             {
                 name: "accessibilità_famiglie_con_bambini",
                 type: "boolean",
-                icon: ""
+                icon: "",
+                enabled: false
             },
             {
                 name: "accessibilità_macchina",
                 type: "boolean",
-                icon: "car"
+                icon: "car",
+                enabled: false
             },
             {
                 name: "ammissibilità_animali_domestici",
                 type: "boolean",
-                combined: "stanze_dedicate",
-                icon: "paw"
+                icon: "paw",
+                enabled: false
             },
-            { name: "stanze_dedicate", type: "number", icon: "" }
+            { name: "stanze_dedicate", type: "number", icon: "", enabled: false }
         ]
     },
     {
         serviceName: "servizi_aggiuntivi",
         tags: [
-            { name: "pagamento_POS", type: "boolean", icon: "credit-card" },
-            { name: "convenzioni", type: "string", icon: "heart" },
+            { name: "pagamento_POS", type: "boolean", icon: "credit-card", enabled: true, alias: "Pagamento con carte" },
+            { name: "convenzioni", type: "string", icon: "heart", enabled: false },
             {
                 name: "richiesta_di_rifornire_il_rifugio",
                 type: "boolean",
-                icon: ""
+                icon: "",
+                enabled: false
             },
-            { name: "presidio_culturale", type: "boolean", icon: "university" },
+            { name: "presidio_culturale", type: "boolean", icon: "university", enabled: false },
             {
                 name: "attività_culturali/corsi_specifici",
                 type: "boolean",
-                icon: ""
+                icon: "star",
+                enabled: false,
+                alias: "Attività"
             }
         ]
     }
@@ -132,6 +144,15 @@ function getServiceBaseEntry(service: string, entry: string) {
         serv => serv.serviceName === service
     );
     return baseService && baseService.tags && baseService.tags.find(tag => tag.name === entry);
+}
+
+function getServiceBaseNameByTag(tagName: string) {
+    const baseService = serviceBaseList.find(
+        serv => {
+            return serv.tags.find(tag => tag.name === tagName) ? true : false;
+        }
+    );
+    return baseService && baseService.serviceName;
 }
 
 const SERVICE_COLUMNS = 2;
@@ -189,7 +210,7 @@ export class TabServicesComponent extends TabItemBase {
 
     getTagMetadata(service, tag): ServiceTag {
         const entry = getServiceBaseEntry(service.name || service.category, tag.key);
-        return entry && !entry.hidden ? entry : null;
+        return entry && entry.enabled ? entry : null;
     }
 
     getServicesBatch(batchCount) {
@@ -209,12 +230,30 @@ export class TabServicesComponent extends TabItemBase {
         }
     }
 
+    _findCombinedValue(key: string) {
+        const serviceName = getServiceBaseNameByTag(key);
+        const data = this.getBaseProperty();
+        if (serviceName && data && Array.isArray(data)) {
+            const service = data.find(s => s.name === serviceName || s.category === serviceName);
+            const tag = service.tags.find(t => t.key === key);
+            return tag && tag.value ? tag.value : null;
+        }
+        return null;
+    }
+
     getTagValue(tagMetadata: ServiceTag, tag) {
-        if (!tagMetadata.hidden) {
+        if (tagMetadata.enabled) {
             if (tagMetadata.type === "boolean") {
                 return tag && tag.value ? "" : null;
             } else {
-                return tag && tag.value ? ": " + tag.value : ": ---";
+                let value = tag ? tag.value : null;
+                if (tagMetadata.combined) {
+                    const combValue = this._findCombinedValue(tagMetadata.combined);
+                    value = combValue ?
+                        Number(combValue) && Number(value) ? Number(combValue) + Number(value) : value + " " + combValue
+                        : value;
+                }
+                return value ? ": " + value : ": ---";
             }
         }
     }

@@ -11,16 +11,15 @@ import { TabServicesComponent } from "./section-tabs/tab-services/tab-services.c
 import { TabGeoComponent } from "./section-tabs/tab-geo/tab-geo.component";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CacheService } from "../cache.service";
-import { TabContactsComponent } from "./section-tabs/tab-contacts/tab-contacts.component";
-import { TabOpeningsComponent } from "./section-tabs/tab-openings/tab-openings.component";
 import { TabPropertyComponent } from "./section-tabs/tab-property/tab-property.component";
+import { TabOpeningContactsComponent } from "./section-tabs/tab-opening-contacts/tab-opening-contacts.component";
 import { merge, Subscription } from "rxjs";
 import { map } from "rxjs/operators";
 import { TabItemBase } from "./section-tabs/tab.base";
 
 export const TABS: ITab[] = [
     {
-        name: "Posizione",
+        name: "Descrizione",
         link: "geographics",
         component: TabGeoComponent,
         section: "geoData",
@@ -33,16 +32,10 @@ export const TABS: ITab[] = [
         component: TabServicesComponent
     },
     {
-        name: "Apertura",
+        name: "Apertura e contatti",
         link: "openings",
-        component: TabOpeningsComponent,
-        section: "openingTime"
-    },
-    {
-        name: "Contatti",
-        link: "contacts",
-        section: "contacts",
-        component: TabContactsComponent
+        component: TabOpeningContactsComponent,
+        section: "contacts"
     },
     {
         name: "Proprietà e struttura",
@@ -75,8 +68,7 @@ export function getDefaultRoute(tabs: ITab[] = TABS): any {
     entryComponents: [
         TabGeoComponent,
         TabServicesComponent,
-        TabContactsComponent,
-        TabOpeningsComponent,
+        TabOpeningContactsComponent,
         TabPropertyComponent
     ]
 })

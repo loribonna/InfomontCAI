@@ -3,7 +3,7 @@
         <app-navbar>
             <img style="height: 32px" src="../assets/images/logo_32x28.png" alt="logo" />
             <span>
-                <h4>Infomont rifugi</h4>
+                <h4>Infomont</h4>
             </span>
         </app-navbar>
     </bc-content-header>
@@ -30,6 +30,9 @@
                     </div>
                     <div class="top-content-data-line">
                         Categoria: {{ getHeaderProperty("category") || "-" }}
+                    </div>
+                    <div class="top-content-data-line">
+                        Stato: {{ getHeaderProperty("status") || "-" }}
                     </div>
                 </div>
                 <div class="bc-h6 top-content-data-multiline">
