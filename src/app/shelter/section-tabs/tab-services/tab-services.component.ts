@@ -33,14 +33,14 @@ const serviceBaseList: ServiceEntry[] = [
             },
             { name: "tavolati", type: "number", icon: "", enabled: false },
             { name: "posti_totali", type: "number", icon: "", enabled: false },
-            { name: "vendita_sacco_lenzuolo", type: "boolean", icon: "box-check", enabled: true }
+            { name: "vendita_sacco_lenzuolo", type: "boolean", icon: "box", enabled: true }
         ]
     },
     {
         serviceName: "ristorazione",
         tags: [
             { name: "ristorante", type: "boolean", icon: "utensils", enabled: true },
-            { name: "accesso_alla_cucina", type: "boolean", icon: "cauldron", enabled: true }
+            { name: "accesso_alla_cucina", type: "boolean", icon: "utensil-spoon", enabled: true }
         ]
     },
     {
