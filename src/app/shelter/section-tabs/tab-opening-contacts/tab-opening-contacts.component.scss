@@ -1,0 +1,19 @@
+@import '../tab.base.scss';
+
+.op-contact {
+    &-line {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &-icon {
+        color: $base-color;
+    }
+
+    &-container {
+        margin: $container-margin;
+        min-height: $container-box-min-heigth;
+        display: block;
+    }
+}

@@ -1,0 +1,32 @@
+Contatti
+<div class="op-contact-line">
+    <bc-icon class="op-contact-icon" data-name="phone" size="xs"></bc-icon>
+    Telefono (Gestore): {{ getProperty("fixedPhone") }}
+</div>
+<div class="op-contact-line">
+    <bc-icon class="op-contact-icon" data-name="mobile" size="xs"></bc-icon>
+    Cellulare (Gestore): {{ getProperty("mobilePhone") }}
+</div>
+<div class="op-contact-line">
+    <bc-icon class="op-contact-icon" data-name="envelope" size="xs"></bc-icon>
+    Mail: {{ getProperty("emailAddress") }}
+</div>
+<div class="op-contact-line">
+    <bc-icon class="op-contact-icon" data-name="mouse-pointer" size="xs"></bc-icon>
+    Sito Web: {{ getProperty("webAddress") }}
+</div>
+<div class="op-contact-line">
+    <bc-icon class="op-contact-icon" data-name="calendar-check" size="xs"></bc-icon>
+    Link prenotazione: {{ getProperty("prenotation_link") }}
+</div>
+<br />
+<div *ngIf="getOpenings()">
+    Aperture
+    <div class="op-contact-line" *ngFor="let opening of getOpenings()">
+        <bc-icon class="dot op-contact-icon" name="circle"></bc-icon>
+        <span>{{ getOpeningProp(opening, "type") | titlecase }}</span>
+        <span *ngIf="checkOpeningDate(opening, 'startDate')">: dal {{ getOpeningProp(opening, "startDate") | date:
+            "dd/MM" }}</span>
+        <span *ngIf="checkOpeningDate(opening, 'endDate')">al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
+    </div>
+</div>
