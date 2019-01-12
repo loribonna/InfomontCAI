@@ -132,7 +132,7 @@ const serviceBaseList: ServiceEntry[] = [
                 name: "attività_culturali/corsi_specifici",
                 type: "boolean",
                 icon: "star",
-                enabled: true,
+                enabled: false,
                 alias: "Attività"
             }
         ]

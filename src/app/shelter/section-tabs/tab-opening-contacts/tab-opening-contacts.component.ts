@@ -30,8 +30,13 @@ export class TabOpeningContactsComponent extends TabItemBase {
         return this.getPropertyUnformatted('openingTime');
     }
 
+    getManagementProp(prop: string) {
+        return this.getPropertyUnformatted('management.' + prop)
+    }
+
     /* override */
     afterInit() {
         this.addSectionToData("openingTime");
+        this.addSectionToData("management");
     }
 }

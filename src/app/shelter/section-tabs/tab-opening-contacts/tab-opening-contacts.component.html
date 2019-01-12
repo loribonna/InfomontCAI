@@ -1,3 +1,14 @@
+<div *ngIf="getOpenings()">
+    Aperture
+    <div class="op-contact-line" *ngFor="let opening of getOpenings()">
+        <bc-icon class="dot op-contact-icon" name="circle"></bc-icon>
+        <span>{{ getOpeningProp(opening, "type") | titlecase }}</span>
+        <span *ngIf="checkOpeningDate(opening, 'startDate')">: dal {{ getOpeningProp(opening, "startDate") | date:
+            "dd/MM" }}</span>
+        <span *ngIf="checkOpeningDate(opening, 'endDate')">al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
+    </div>
+    <app-divider></app-divider>
+</div>
 Contatti
 <div class="op-contact-line">
     <bc-icon class="op-contact-icon" data-name="phone" size="xs"></bc-icon>
@@ -19,14 +30,14 @@ Contatti
     <bc-icon class="op-contact-icon" data-name="calendar-check" size="xs"></bc-icon>
     Link prenotazione: {{ getProperty("prenotation_link") }}
 </div>
-<br />
-<div *ngIf="getOpenings()">
-    Aperture
-    <div class="op-contact-line" *ngFor="let opening of getOpenings()">
-        <bc-icon class="dot op-contact-icon" name="circle"></bc-icon>
-        <span>{{ getOpeningProp(opening, "type") | titlecase }}</span>
-        <span *ngIf="checkOpeningDate(opening, 'startDate')">: dal {{ getOpeningProp(opening, "startDate") | date:
-            "dd/MM" }}</span>
-        <span *ngIf="checkOpeningDate(opening, 'endDate')">al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
+<div *ngIf="getManagementProp('pickupKey') || getManagementProp('self_management')">
+    <app-divider></app-divider>
+    <div class="op-contact-line" *ngIf="getManagementProp('pickupKey')">
+        <bc-icon class="op-contact-icon" name="key" size="xs"></bc-icon>
+        Ritiro chiavi
+    </div>
+    <div class="op-contact-line" *ngIf="getManagementProp('self_management')">
+        <bc-icon class="op-contact-icon" name="users" size="xs"></bc-icon>
+        Autogestione
     </div>
 </div>
