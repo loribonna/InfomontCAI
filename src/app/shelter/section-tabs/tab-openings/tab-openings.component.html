@@ -1,6 +1,0 @@
-<div class="opening-line" *ngFor="let opening of getBaseProperty()">
-    <bc-icon class="dot opening-icon" name="circle"></bc-icon>
-    <span>{{ getOpeningProp(opening, "type") | titlecase }}</span>
-    <span *ngIf="checkOpeningDate(opening, 'startDate')">: dal {{ getOpeningProp(opening, "startDate") | date: "dd/MM" }}</span>
-    <span *ngIf="checkOpeningDate(opening, 'endDate')">al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
-</div>

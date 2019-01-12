@@ -19,26 +19,9 @@
         <app-divider></app-divider>
     </div>
 </div>
-<div *ngIf="getPropertyUnformatted('pickupKey') || getPropertyUnformatted('self_management')">
-    <div class="prop-line" *ngIf="getPropertyUnformatted('pickupKey')">
-        <bc-icon class="prop-icon" name="key" size="xs"></bc-icon>
-        Ritiro chiavi
-    </div>
-    <div class="prop-line" *ngIf="getPropertyUnformatted('self_management')">
-        <bc-icon class="prop-icon" name="users" size="xs"></bc-icon>
-        Autogestione
-    </div>
-    <div class="prop-divider">
-        <app-divider></app-divider>
-    </div>
-</div>
 <div>
     <div class="prop-line">
         <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Anno di costruzione: {{ getCatastalProp('buildYear') }}
-    </div>
-    <div class="prop-line" *ngIf="getCatastalProp('ISO14001')">
-        <bc-icon class="prop-icon" name="certificate" size="xs"></bc-icon>
-        Certificazione ISO 14001
     </div>
 </div>

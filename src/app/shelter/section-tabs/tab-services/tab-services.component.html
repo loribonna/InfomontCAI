@@ -5,7 +5,8 @@
                 <div *ngIf="getTagMetadata(service, tag); let tagMetadata">
                     <span *ngIf="checkTagValue(tagMetadata, tag)">
                         <span *ngIf="tagMetadata.icon">
-                            <bc-icon class="serv-icon" [name]="tagMetadata.icon" size="xs"></bc-icon>
+                            <bc-icon class="serv-icon" [name]="tagMetadata.icon" [style.color]="tagMetadata.iconColor || ''"
+                                size="xs"></bc-icon>
                         </span>
                         <span *ngIf="!tagMetadata.icon">
                             <bc-icon class="dot" name="circle"></bc-icon>
