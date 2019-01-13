@@ -55,19 +55,11 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
         }
     }
 
-    ngOnInit() {
-        /*const sub = this.route.data.subscribe((d: any) => {
-            this._section = d.section;
-            this.initData();
-            if (sub) {
-                sub.unsubscribe();
-            }
-        });*/
-    }
+    ngOnInit() {}
 
     ngOnDestroy() {}
 
-    getPropertyUnformatted(prop) {
+    getPropertyUnformatted(prop: string) {
         if (this._baseProperty) {
             return this._resolveProperty(this._baseProperty + "." + prop);
         } else {
@@ -75,7 +67,15 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
         }
     }
 
-    getProperty(prop) {
+    getPropertyComposed(prop: string, chars: string) {
+        const value = this.getPropertyUnformatted(prop);
+        if(value) {
+            return value + chars;
+        }
+        return null;
+    }
+
+    getProperty(prop: string) {
         return this.getPropertyUnformatted(prop) || "---";
     }
 

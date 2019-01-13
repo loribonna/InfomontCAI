@@ -5,7 +5,12 @@
   <div (click)="previousImage($event)" class="img-full-control img-full-control-left">
     <bc-icon data-name="arrow-left" data-size="xl"></bc-icon>
   </div>
-  <img (click)="imgClick($event)" class="img-full-view" [src]="getFullViewImageSrc()" />
+  <div (click)="imgClick($event)" class="img-full-view">
+      <img class="img-full-view-content" [src]="getFullViewImageSrc()">
+      <div class="img-full-view-description">
+        {{getCurrentDescription()}}
+      </div>
+  </div>
   <div (click)="nextImage($event)" class="img-full-control img-full-control-right">
     <bc-icon data-name="arrow-right" data-size="xl"></bc-icon>
   </div>

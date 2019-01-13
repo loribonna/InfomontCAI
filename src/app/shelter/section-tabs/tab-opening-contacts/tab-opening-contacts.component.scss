@@ -11,6 +11,10 @@
         color: $base-color;
     }
 
+    &-title {
+        font-weight: bold;
+    }
+
     &-container {
         margin: $container-margin;
         min-height: $container-box-min-heigth;
