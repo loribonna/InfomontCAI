@@ -11,14 +11,15 @@
                         <span *ngIf="!tagMetadata.icon">
                             <bc-icon class="dot" name="circle"></bc-icon>
                         </span>
+                        {{ tag.key | usertitlecase }}
+                        {{ getTagValue(tagMetadata, tag) | usertitlecase }}
+                        <div class="service-container-divider">
+                            <app-divider></app-divider>
+                        </div>
                     </span>
-                    {{ tag.key | usertitlecase }}
-                    {{ getTagValue(tagMetadata, tag) | usertitlecase }}
                 </div>
             </div>
-            <div class="service-container-divider">
-                <app-divider></app-divider>
-            </div>
+            
         </div>
     </div>
 </div>

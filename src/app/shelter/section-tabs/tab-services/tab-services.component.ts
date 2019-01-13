@@ -139,6 +139,13 @@ const serviceBaseList: ServiceEntry[] = [
     }
 ];
 
+function getTagsToDisplayCount() {
+    return serviceBaseList.reduce((acc, val) => {
+        const tags = val.tags.filter(t => t.enabled).length;
+        return acc + tags;
+    }, 0);
+}
+
 function getServiceBaseEntry(service: string, entry: string) {
     const baseService = serviceBaseList.find(
         serv => serv.serviceName === service
@@ -153,6 +160,11 @@ function getServiceBaseNameByTag(tagName: string) {
         }
     );
     return baseService && baseService.serviceName;
+}
+
+function getTagMetadataIfEnabled(service, tag) {
+    const entry = getServiceBaseEntry(service.name || service.category, tag.key);
+    return entry && entry.enabled ? entry : null;
 }
 
 const SERVICE_COLUMNS = 2;
@@ -196,11 +208,31 @@ export class TabServicesComponent extends TabItemBase {
         if (this._chunks && this._chunks.length > 0) {
             return this._chunks;
         } else {
-            const chunks = chunkArray(this.getBaseProperty(), SERVICE_COLUMNS);
+            const chunks = chunkArray(this.getBaseProperty(), this._getChunksNumber());
             if (chunks && chunks.length > 0) {
                 this._chunks = chunks;
             }
             return this._chunks;
+        }
+    }
+
+    private _getChunksNumber() {
+        const services = this.getBaseProperty();
+        if (services && Array.isArray(services)) {
+            const tagCount = (<any[]>services).reduce((acc, val) => {
+                const tags = val.tags && Array.isArray(val.tags)
+                    ? val.tags.filter(t => getTagMetadataIfEnabled(val, t)).length
+                    : 0;
+                return acc + tags;
+            }, 0);
+            const tagsToDisplay = getTagsToDisplayCount();
+            if (tagCount > tagsToDisplay / SERVICE_COLUMNS) {
+                return SERVICE_COLUMNS
+            } else {
+                return 1;
+            }
+        } else {
+            return 0;
         }
     }
 
@@ -209,8 +241,7 @@ export class TabServicesComponent extends TabItemBase {
     }
 
     getTagMetadata(service, tag): ServiceTag {
-        const entry = getServiceBaseEntry(service.name || service.category, tag.key);
-        return entry && entry.enabled ? entry : null;
+        return getTagMetadataIfEnabled(service, tag);
     }
 
     getServicesBatch(batchCount) {
@@ -219,12 +250,16 @@ export class TabServicesComponent extends TabItemBase {
     }
 
     getColumnsRange() {
-        return range(SERVICE_COLUMNS);
+        return range(this._getChunksNumber())
     }
 
     checkTagValue(tagMetadata: ServiceTag, tag) {
         if (tagMetadata.type === "boolean") {
-            return tag && tag.value;
+            if (tag && typeof (tag.value) === "string") {
+                const value = String(tag.value).toLowerCase();
+                return value !== "no"
+            }
+            return tag && tag.value == true;
         } else {
             return true;
         }

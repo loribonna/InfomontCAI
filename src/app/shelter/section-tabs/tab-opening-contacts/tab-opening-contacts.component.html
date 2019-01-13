@@ -1,5 +1,7 @@
-<div *ngIf="getOpenings()">
-    Aperture
+<div *ngIf="checkOpenings()">
+    <span class="op-contact-title">
+        Aperture
+    </span>
     <div class="op-contact-line" *ngFor="let opening of getOpenings()">
         <bc-icon class="dot op-contact-icon" name="circle"></bc-icon>
         <span>{{ getOpeningProp(opening, "type") | titlecase }}</span>
@@ -9,7 +11,9 @@
     </div>
     <app-divider></app-divider>
 </div>
-Contatti
+<span class="op-contact-title">
+    Contatti
+</span>
 <div class="op-contact-line">
     <bc-icon class="op-contact-icon" data-name="phone" size="xs"></bc-icon>
     Telefono (Gestore): {{ getProperty("fixedPhone") }}
