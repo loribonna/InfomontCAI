@@ -49,6 +49,18 @@ export class ImageGalleryComponent implements OnInit {
 
   constructor() { }
 
+  private _getCurrentImageData() {
+    if (
+      this.content &&
+      this._fullViewImage != null &&
+      this.content[this._fullViewImage]
+    ) {
+      return this.content[this._fullViewImage];
+    } else {
+      return null;
+    }
+  }
+
   ngOnInit() {
   }
 
@@ -80,15 +92,14 @@ export class ImageGalleryComponent implements OnInit {
   }
 
   getFullViewImageSrc(): any {
-    if (
-      this.content &&
-      this._fullViewImage != null &&
-      this.content[this._fullViewImage]
-    ) {
-      return this.content[this._fullViewImage].url;
-    } else {
-      return "";
-    }
+    const data = this._getCurrentImageData();
+
+    return data ? data.url || "" : "";
+  }
+
+  getCurrentDescription() {
+    const data = this._getCurrentImageData();
+    return data && data.file ? data.file.description || "" : "";
   }
 
 }
