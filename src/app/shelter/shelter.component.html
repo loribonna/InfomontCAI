@@ -13,17 +13,15 @@
                 <div style="white-space: nowrap" class="bc-h5 shel-name">
                     {{ getHeaderProperty("name") }}
                 </div>
-                <div class="bc-h6 shel-subname top-content-data-line">
-                    <bc-icon class="shel-icon" data-name="map-marker-alt"></bc-icon>
+                <div class="bc-h6 top-content-data-line">
+                    <bc-icon class="shel-icon" data-name="map-marker-alt" size="s"></bc-icon>
                     {{ getLocationProperty("locality") | titlecase }}
+                    ({{getLocationProperty("longitude") || '-'}}; {{getLocationProperty("latitude") || '-'}};
+                    {{getLocationPropertyFormatted("altitude", "m")}})
                 </div>
                 <div class="bc-h6">
                     <div class="top-content-data-line">
-                        ({{getLocationProperty("longitude") || '-'}}; {{getLocationProperty("latitude") || '-'}};
-                        {{getLocationPropertyFormatted("altitude", "m")}})
-                    </div>
-                    <div class="top-content-data-line">
-                        Sezione {{ getHeaderProperty("owner") }}
+                        Sezione {{ getHeaderProperty("branch") }}
                     </div>
                     <div class="top-content-data-line">
                         {{ getHeaderProperty("type") }}
@@ -34,9 +32,6 @@
                     <div class="top-content-data-line">
                         Stato: {{ getHeaderProperty("status") || "-" }}
                     </div>
-                </div>
-                <div class="bc-h6 top-content-data-multiline">
-                    {{ getLocationProperty("site") }}
                 </div>
             </div>
             <div class="top-content top-content-images">

@@ -39,4 +39,9 @@ export class TabOpeningContactsComponent extends TabItemBase {
         this.addSectionToData("openingTime");
         this.addSectionToData("management");
     }
+
+    checkOpenings() {
+        const openings = this.getOpenings();
+        return openings && Array.isArray(openings) && openings.length > 0;
+    }
 }

@@ -23,7 +23,7 @@
           }
   
         }
-  
+
         &-control {
           z-index: 11;
           position: fixed;
@@ -61,21 +61,38 @@
         }
   
         &-view {
+          max-width: 85%;
+          max-height: 85%;
           z-index: 11;
           position: fixed;
-          margin: auto;
           bottom: 0;
           top: 0;
           left: 0;
           right: 0;
-  
-          max-width: 85%;
-          max-height: 85%;
-  
-          &:hover {
-            cursor: pointer;
+          margin: auto;
+          text-align: center;
+
+          &-content {
+            height: 100%;
+            max-width: 100%;
+
+            &:hover {
+              cursor: pointer;
+            }
           }
+
+          &-description {
+            position: relative;
+            border: 0;
+            text-align: left;
+            color: white;
+            margin:auto;
+            margin-left: 5vw;
+            width: 100%;
+          }
+
         }
+        
       }
     }
   }
