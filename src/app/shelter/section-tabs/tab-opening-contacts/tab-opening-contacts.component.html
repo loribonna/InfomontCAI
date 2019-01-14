@@ -5,9 +5,9 @@
     <div class="op-contact-line" *ngFor="let opening of getOpenings()">
         <bc-icon class="dot op-contact-icon" name="circle"></bc-icon>
         <span>{{ getOpeningProp(opening, "type") | titlecase }}</span>
-        <span *ngIf="checkOpeningDate(opening, 'startDate')">: dal {{ getOpeningProp(opening, "startDate") | date:
+        <span class="op-contact-line-content" *ngIf="checkOpeningDate(opening, 'startDate')">: dal {{ getOpeningProp(opening, "startDate") | date:
             "dd/MM" }}</span>
-        <span *ngIf="checkOpeningDate(opening, 'endDate')">al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
+        <span class="op-contact-line-content" *ngIf="checkOpeningDate(opening, 'endDate')"> al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
     </div>
     <app-divider></app-divider>
 </div>
