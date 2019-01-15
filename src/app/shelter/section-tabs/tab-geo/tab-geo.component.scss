@@ -3,6 +3,7 @@
 .geo {
     &-container {
         margin: $container-margin;
+        margin-left: $container-margin-left;
         min-height: $container-box-min-heigth;
         display: block;
     }
