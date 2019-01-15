@@ -79,6 +79,14 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
         return null;
     }
 
+    getPropertyPreformatted(chars: string, prop: string) {
+        const value = this.getPropertyUnformatted(prop);
+        if(value) {
+            return chars + value;
+        }
+        return null;
+    }
+
     getProperty(prop: string) {
         return this.getPropertyUnformatted(prop) || "---";
     }
