@@ -59,6 +59,10 @@ export abstract class TabItemBase implements OnInit, OnDestroy {
 
     ngOnDestroy() {}
 
+    checkProperty(prop: string) {
+        return this.data && this.getPropertyUnformatted(prop);
+    }
+
     getPropertyUnformatted(prop: string) {
         if (this._baseProperty) {
             return this._resolveProperty(this._baseProperty + "." + prop);

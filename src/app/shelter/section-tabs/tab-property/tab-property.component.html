@@ -1,17 +1,17 @@
 <div *ngIf="getOwner(); let owner">
-    <div class="prop-line">
+    <div *ngIf="checkSubjectProperty(owner,'name')" class="prop-line">
         <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Ente: {{ owner.name || "---" }}
     </div>
-    <div class="prop-line">
+    <div *ngIf="checkSubjectProperty(owner,'fixedPhone')" class="prop-line">
         <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Telefono: {{ owner.fixedPhone || "---" }}
     </div>
-    <div class="prop-line">
+    <div *ngIf="checkSubjectProperty(owner,'email')"  class="prop-line">
         <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Mail: {{ owner.email || "---" }}
     </div>
-    <div class="prop-line">
+    <div *ngIf="checkSubjectProperty(owner,'webSite')"  class="prop-line">
         <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Sito Web: {{ owner.webSite || "---" }}
     </div>
@@ -20,7 +20,7 @@
     </div>
 </div>
 <div>
-    <div class="prop-line">
+    <div *ngIf="checkCatastalProp('buildYear')" class="prop-line">
         <bc-icon class="dot prop-icon" name="circle"></bc-icon>
         Anno di costruzione: {{ getCatastalProp('buildYear') }}
     </div>

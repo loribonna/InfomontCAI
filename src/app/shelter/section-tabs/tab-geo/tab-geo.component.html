@@ -1,13 +1,14 @@
-<div class="geo-multiline">
-    In località {{getPropertyUnformatted('locality') | titlecase}}, {{getPropertyComposed('massif',',') | titlecase}}
-    {{getPropertyUnformatted('valley') | titlecase}}
+<div *ngIf="checkProperty('locality') || checkProperty('valley') || checkProperty('massif')" class="geo-multiline">
+    <span *ngIf="checkProperty('locality')">
+        In località {{getPropertyUnformatted('locality') | titlecase}},
+    </span> {{getPropertyComposed('massif',',') | titlecase}} {{getPropertyUnformatted('valley') | titlecase}}
 </div>
-<div *ngIf="getPropertyUnformatted('ski_area') || getPropertyUnformatted('protected_area')" class="geo-multiline">
+<div *ngIf="checkProperty('ski_area') || checkProperty('protected_area')" class="geo-multiline">
     In area:
     <span>{{getPropertyUnformatted('protected_area') | titlecase}}</span>
-    <span *ngIf="getPropertyUnformatted('ski_area') && getPropertyUnformatted('protected_area')">, nel </span>
+    <span *ngIf="checkProperty('ski_area') && checkProperty('protected_area')">, nel </span>
     <span>{{getPropertyUnformatted('ski_area') | titlecase}}</span>
 </div>
-<div class="geo-multiline">
+<div *ngIf="checkProperty('site')" class="geo-multiline">
     {{getPropertyUnformatted('site')}}
 </div>
