@@ -5,43 +5,44 @@
     <div class="op-contact-line" *ngFor="let opening of getOpenings()">
         <bc-icon class="dot op-contact-icon" name="circle"></bc-icon>
         <span>{{ getOpeningProp(opening, "type") | titlecase }}</span>
-        <span class="op-contact-line-content" *ngIf="checkOpeningDate(opening, 'startDate')">: dal {{ getOpeningProp(opening, "startDate") | date:
+        <span class="op-contact-line-content" *ngIf="checkOpeningDate(opening, 'startDate')||checkOpeningDate(opening, 'endDate')">:</span>
+        <span class="op-contact-line-content" *ngIf="checkOpeningDate(opening, 'startDate')"> dal {{ getOpeningProp(opening, "startDate") | date:
             "dd/MM" }}</span>
-        <span class="op-contact-line-content" *ngIf="checkOpeningDate(opening, 'endDate')"> al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
+        <span class="op-contact-line-content" *ngIf="checkOpeningDate(opening, 'endDate')"> fino al {{ getOpeningProp(opening, "endDate") | date: "dd/MM" }}</span>
     </div>
     <app-divider></app-divider>
 </div>
 <span class="op-contact-title">
     Contatti
 </span>
-<div class="op-contact-line">
+<div *ngIf="checkProperty('fixedPhone')" class="op-contact-line">
     <bc-icon class="op-contact-icon" data-name="phone" size="xs"></bc-icon>
-    Telefono (Gestore): {{ getProperty("fixedPhone") }}
+    Telefono
+    <span class="op-contact-line-content" *ngIf="checkProperty('role')"> ({{getProperty('role')}})</span>
+    <span class="op-contact-line-content">: {{ getProperty("fixedPhone") }}</span>
 </div>
-<div class="op-contact-line">
+<div *ngIf="checkProperty('mobilePhone')" class="op-contact-line">
     <bc-icon class="op-contact-icon" data-name="mobile" size="xs"></bc-icon>
-    Cellulare (Gestore): {{ getProperty("mobilePhone") }}
+    Cellulare
+    <span class="op-contact-line-content" *ngIf="checkProperty('role')"> ({{getProperty('role')}})</span>
+    <span class="op-contact-line-content">: {{ getProperty("mobilePhone") }}</span>
 </div>
-<div class="op-contact-line">
+<div *ngIf="checkProperty('emailAddress')" class="op-contact-line">
     <bc-icon class="op-contact-icon" data-name="envelope" size="xs"></bc-icon>
     Mail: {{ getProperty("emailAddress") }}
 </div>
-<div class="op-contact-line">
+<div *ngIf="checkProperty('webAddress')" class="op-contact-line">
     <bc-icon class="op-contact-icon" data-name="mouse-pointer" size="xs"></bc-icon>
     Sito Web: {{ getProperty("webAddress") }}
 </div>
-<div class="op-contact-line">
+<div *ngIf="checkProperty('prenotation_link')" class="op-contact-line">
     <bc-icon class="op-contact-icon" data-name="calendar-check" size="xs"></bc-icon>
     Link prenotazione: {{ getProperty("prenotation_link") }}
 </div>
-<div *ngIf="getManagementProp('pickupKey') || getManagementProp('self_management')">
+<div *ngIf="getManagementProp('pickupKey')">
     <app-divider></app-divider>
     <div class="op-contact-line" *ngIf="getManagementProp('pickupKey')">
         <bc-icon class="op-contact-icon" name="key" size="xs"></bc-icon>
         Ritiro chiavi
-    </div>
-    <div class="op-contact-line" *ngIf="getManagementProp('self_management')">
-        <bc-icon class="op-contact-icon" name="users" size="xs"></bc-icon>
-        Autogestione
     </div>
 </div>

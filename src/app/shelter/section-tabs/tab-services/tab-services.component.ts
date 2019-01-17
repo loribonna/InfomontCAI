@@ -186,6 +186,48 @@ function range(n: number) {
     return Array.from(Array(n).keys());
 }
 
+function sortTags(tags: any[]) {
+    return tags.sort((a, b) => {
+        const na = a.key;
+        const nb = b.key;
+        if(String(na) > String(nb)) {
+            return 1;
+        } else if(String(na) < String(nb)) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+}
+
+function sortServices(services: any[]) {
+    return services.sort((a, b) => {
+        const na = a.category || a.name;
+        const nb = b.category || b.name;
+        if(String(na) > String(nb)) {
+            return 1;
+        } else if(String(na) < String(nb)) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+}
+
+function orderServiceBatches(batches: any[][]) {
+    if(!batches){
+        return null;
+    }
+    return batches.map(services => {
+        services.map(service => {
+            if(service.tags && Array.isArray(service.tags)) {
+                service.tags = sortTags(service.tags);
+            }
+        });
+        return sortServices(services)
+    })
+}
+
 @Component({
     selector: "app-tab-services",
     host: {
@@ -246,7 +288,8 @@ export class TabServicesComponent extends TabItemBase {
 
     getServicesBatch(batchCount) {
         const batches = this._getChunks();
-        return batches ? batches[batchCount] : [];
+        const orderedBatches = orderServiceBatches(batches);
+        return orderedBatches ? orderedBatches[batchCount] : [];
     }
 
     getColumnsRange() {

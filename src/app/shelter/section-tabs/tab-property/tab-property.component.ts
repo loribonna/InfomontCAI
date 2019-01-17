@@ -34,14 +34,28 @@ export class TabPropertyComponent extends TabItemBase {
         return null;
     }
 
+    checkSubjectProperty(subject: any, prop: string) {
+        return subject && prop && prop.split('\.').reduce((acc, val) => {
+            if (acc && acc[val]) {
+                return acc[val];
+            } else {
+                return null;
+            }
+        }, subject);
+    }
+
     /* override */
     afterInit() {
         this.addSectionToData("catastal");
     }
 
-    getCatastalProp(prop) {
+    getCatastalProp(prop: string) {
         return this.data && this.data.catastal && this.data.catastal[prop]
             ? this.data.catastal[prop]
             : "---";
+    }
+
+    checkCatastalProp(prop: string) {
+        return this.data && this.data.catastal && this.data.catastal[prop];
     }
 }

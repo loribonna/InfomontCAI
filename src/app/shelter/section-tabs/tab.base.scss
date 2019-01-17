@@ -2,7 +2,8 @@
 @include bc-typography();
 
 $container-box-min-heigth: 8vh;
-$container-margin: 1%;
+$container-margin: 4px;
+$container-margin-left: 16px;
 
 .dot {
     margin: 0;

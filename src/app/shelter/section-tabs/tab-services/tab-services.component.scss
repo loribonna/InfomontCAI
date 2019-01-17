@@ -3,6 +3,7 @@
 
 .service-container {
     margin: $container-margin;
+    margin-left: $container-margin-left;
     display: flex;
     min-height: $container-box-min-heigth;
     &-column {

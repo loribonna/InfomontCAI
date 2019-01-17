@@ -176,6 +176,14 @@ export class ShelterComponent implements OnInit, OnDestroy {
         this.loadComponent(tab);
     }
 
+    checkHeaderProperty(property: string) {
+        return this._data && this._data[property];
+    }
+    
+    checkLocationProperty(property: string) {
+        return this._data && this._data.geoData && this._data.geoData.location && this._data.geoData.location[property];
+    }
+
     getHeaderProperty(property: string) {
         return this._data && this._data[property] ? this._data[property] : "";
     }
