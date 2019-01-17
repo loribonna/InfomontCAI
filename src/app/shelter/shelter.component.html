@@ -1,7 +1,7 @@
 <bc-content>
     <bc-content-header>
         <app-navbar>
-            <img style="height: 32px" src="../assets/images/logo_32x28.png" alt="logo" />
+            <img class="header-content" style="height: 32px" src="../assets/images/logo_32x28.png" alt="logo" />
             <span>
                 <h4>Infomont</h4>
             </span>
@@ -16,20 +16,22 @@
                 <div class="bc-h6 top-content-data-line">
                     <bc-icon class="shel-icon" data-name="map-marker-alt" size="s"></bc-icon>
                     {{ getLocationProperty("locality") | titlecase }}
-                    ({{getLocationProperty("longitude") || '-'}}; {{getLocationProperty("latitude") || '-'}};
-                    {{getLocationPropertyFormatted("altitude", "m")}})
+                    <span *ngIf="checkLocationProperty('longitude')||checkLocationProperty('latitude')||checkLocationProperty('altitude')">
+                        ({{getLocationProperty("longitude") || '-'}}; {{getLocationProperty("latitude") || '-'}};
+                        {{getLocationPropertyFormatted("altitude", "m")}})
+                    </span>
                 </div>
                 <div class="bc-h6">
-                    <div class="top-content-data-line">
+                    <div *ngIf="checkHeaderProperty('branch')" class="top-content-data-line">
                         Sezione {{ getHeaderProperty("branch") }}
                     </div>
-                    <div class="top-content-data-line">
+                    <div *ngIf="checkHeaderProperty('type')" class="top-content-data-line">
                         {{ getHeaderProperty("type") }}
                     </div>
-                    <div class="top-content-data-line">
+                    <div *ngIf="checkHeaderProperty('category')" class="top-content-data-line">
                         Categoria: {{ getHeaderProperty("category") || "-" }}
                     </div>
-                    <div class="top-content-data-line">
+                    <div *ngIf="checkHeaderProperty('status')" class="top-content-data-line">
                         Stato: {{ getHeaderProperty("status") || "-" }}
                     </div>
                 </div>
