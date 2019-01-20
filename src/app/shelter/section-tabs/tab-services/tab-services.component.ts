@@ -186,46 +186,20 @@ function range(n: number) {
     return Array.from(Array(n).keys());
 }
 
-function sortTags(tags: any[]) {
-    return tags.sort((a, b) => {
-        const na = a.key;
-        const nb = b.key;
-        if(String(na) > String(nb)) {
-            return 1;
-        } else if(String(na) < String(nb)) {
-            return -1;
-        } else {
-            return 0;
-        }
-    });
-}
-
-function sortServices(services: any[]) {
-    return services.sort((a, b) => {
-        const na = a.category || a.name;
-        const nb = b.category || b.name;
-        if(String(na) > String(nb)) {
-            return 1;
-        } else if(String(na) < String(nb)) {
-            return -1;
-        } else {
-            return 0;
-        }
-    });
-}
-
-function orderServiceBatches(batches: any[][]) {
-    if(!batches){
-        return null;
-    }
-    return batches.map(services => {
-        services.map(service => {
-            if(service.tags && Array.isArray(service.tags)) {
-                service.tags = sortTags(service.tags);
+function checkTagValue(tagMetadata: ServiceTag, tag: any) {
+    if(tag && tagMetadata.enabled) {
+        if (tagMetadata.type === "boolean") {
+            if (tag && typeof (tag.value) === "string") {
+                const value = String(tag.value).toLowerCase();
+                return value !== "no"
             }
-        });
-        return sortServices(services)
-    })
+            return tag && tag.value == true;
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
 }
 
 @Component({
@@ -238,7 +212,7 @@ function orderServiceBatches(batches: any[][]) {
     encapsulation: ViewEncapsulation.None
 })
 export class TabServicesComponent extends TabItemBase {
-    _chunks: any[];
+    _chunks: ServiceEntry[][];
     constructor(
         protected route: ActivatedRoute,
         protected cache: CacheService
@@ -250,7 +224,7 @@ export class TabServicesComponent extends TabItemBase {
         if (this._chunks && this._chunks.length > 0) {
             return this._chunks;
         } else {
-            const chunks = chunkArray(this.getBaseProperty(), this._getChunksNumber());
+            const chunks = chunkArray(serviceBaseList, this._getChunksNumber());
             if (chunks && chunks.length > 0) {
                 this._chunks = chunks;
             }
@@ -278,37 +252,7 @@ export class TabServicesComponent extends TabItemBase {
         }
     }
 
-    getServiceTags(service: ServiceEntry) {
-        return service.tags;
-    }
-
-    getTagMetadata(service, tag): ServiceTag {
-        return getTagMetadataIfEnabled(service, tag);
-    }
-
-    getServicesBatch(batchCount) {
-        const batches = this._getChunks();
-        const orderedBatches = orderServiceBatches(batches);
-        return orderedBatches ? orderedBatches[batchCount] : [];
-    }
-
-    getColumnsRange() {
-        return range(this._getChunksNumber())
-    }
-
-    checkTagValue(tagMetadata: ServiceTag, tag) {
-        if (tagMetadata.type === "boolean") {
-            if (tag && typeof (tag.value) === "string") {
-                const value = String(tag.value).toLowerCase();
-                return value !== "no"
-            }
-            return tag && tag.value == true;
-        } else {
-            return true;
-        }
-    }
-
-    _findCombinedValue(key: string) {
+    private _findCombinedValue(key: string) {
         const serviceName = getServiceBaseNameByTag(key);
         const data = this.getBaseProperty();
         if (serviceName && data && Array.isArray(data)) {
@@ -317,6 +261,27 @@ export class TabServicesComponent extends TabItemBase {
             return tag && tag.value ? tag.value : null;
         }
         return null;
+    }
+
+    getColumnsRange() {
+        return range(this._getChunksNumber())
+    }
+
+    getServiceMetadataBatch(batchCount: number) {
+        const batches = this._getChunks();
+        return batches[batchCount];
+    }
+
+    getTagMetadataBatch(service: ServiceEntry) {
+        return service.tags;
+    }
+
+    getTagValueFromMeta(serviceMetadata: ServiceEntry, tagMetadata: ServiceTag) {
+        const data = this.getBaseProperty();
+        const service = data.find(s => s.name === serviceMetadata.serviceName || s.category === serviceMetadata.serviceName);
+        const tag = service && service.tags ? service.tags.find(t => t.key === tagMetadata.name) : null;
+
+        return checkTagValue(tagMetadata, tag) ? tag : null;
     }
 
     getTagValue(tagMetadata: ServiceTag, tag) {
@@ -334,9 +299,5 @@ export class TabServicesComponent extends TabItemBase {
                 return value ? ": " + value : ": ---";
             }
         }
-    }
-
-    checkTags(service: any) {
-        return service && service.tags && service.tags.length;
     }
 }

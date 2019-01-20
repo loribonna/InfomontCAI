@@ -1,4 +1,27 @@
 <div *ngFor="let column of getColumnsRange()" class="service-container-column">
+    <div *ngFor="let serviceMetadata of getServiceMetadataBatch(column)">
+        <div *ngFor="let tagMetadata of getTagMetadataBatch(serviceMetadata)">
+            <span *ngIf="getTagValueFromMeta(serviceMetadata,tagMetadata); let tag">
+                <span *ngIf="tagMetadata.icon">
+                    <bc-icon class="serv-icon" [name]="tagMetadata.icon" [style.color]="tagMetadata.iconColor || ''"
+                        size="xs"></bc-icon>
+                </span>
+                <span *ngIf="!tagMetadata.icon">
+                    <bc-icon class="dot" name="circle"></bc-icon>
+                </span>
+                {{ tag.key | usertitlecase }}
+                {{ getTagValue(tagMetadata, tag) | usertitlecase }}
+                <div class="service-container-divider">
+                    <app-divider></app-divider>
+                </div>
+            </span>
+
+        </div>
+    </div>
+
+
+
+    <!--
     <div *ngFor="let service of getServicesBatch(column)">
         <div *ngIf="checkTags(service)">
             <div *ngFor="let tag of getServiceTags(service)">
@@ -22,4 +45,5 @@
             
         </div>
     </div>
+    -->
 </div>
