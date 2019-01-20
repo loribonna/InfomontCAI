@@ -16,10 +16,17 @@
                 <div class="bc-h6 top-content-data-line">
                     <bc-icon class="shel-icon" data-name="map-marker-alt" size="s"></bc-icon>
                     {{ getLocationProperty("locality") | titlecase }}
-                    <span *ngIf="checkLocationProperty('longitude')||checkLocationProperty('latitude')||checkLocationProperty('altitude')">
-                        ({{getLocationProperty("longitude") || '-'}}; {{getLocationProperty("latitude") || '-'}};
-                        {{getLocationPropertyFormatted("altitude", "m")}})
-                    </span>
+                    <div style="display: inline-block" *ngIf="checkLocationProperty('longitude')||checkLocationProperty('latitude')||checkLocationProperty('altitude')">
+                        (
+                        <div style="display: inline-block" *ngIf="checkLocationProperty('longitude')||checkLocationProperty('latitude')">
+                            {{getLocationProperty("latitude") || '-'}} ; {{getLocationProperty("longitude") || '-'}}
+                        </div>
+                        <span *ngIf="(checkLocationProperty('longitude')||checkLocationProperty('latitude'))&&checkLocationProperty('altitude')">
+                            ;
+                        </span>
+                        {{getLocationPropertyFormatted("altitude", "m")}}
+                        )
+                    </div>
                 </div>
                 <div class="bc-h6">
                     <div *ngIf="checkHeaderProperty('branch')" class="top-content-data-line">
