@@ -17,15 +17,27 @@
                     <bc-icon class="shel-icon" data-name="map-marker-alt" size="s"></bc-icon>
                     {{ getLocationProperty("locality") | titlecase }}
                     <div style="display: inline-block" *ngIf="checkLocationProperty('longitude')||checkLocationProperty('latitude')||checkLocationProperty('altitude')">
-                        (
-                        <div style="display: inline-block" *ngIf="checkLocationProperty('longitude')||checkLocationProperty('latitude')">
-                            {{getLocationProperty("latitude") || '-'}} ; {{getLocationProperty("longitude") || '-'}}
+                        <div style="display: inline-block">
+                            (
                         </div>
-                        <span *ngIf="(checkLocationProperty('longitude')||checkLocationProperty('latitude'))&&checkLocationProperty('altitude')">
+                        <div style="display: inline-block">
+                            {{getLocationProperty("latitude")}} 
+                        </div>
+                        <span *ngIf="checkLocationProperty('longitude')&&checkLocationProperty('latitude')">
                             ;
                         </span>
-                        {{getLocationPropertyFormatted("altitude", "m")}}
-                        )
+                        <div style="display: inline-block">
+                            {{getLocationProperty("longitude")}}
+                        </div>
+                        <span *ngIf="(checkLocationProperty('longitude')||checkLocationProperty('latitude'))&&checkLocationProperty('altitude')">
+                            -
+                        </span>
+                        <div style="display: inline-block">
+                            {{getLocationPropertyFormatted("altitude", "m")}}
+                        </div>
+                        <div style="display: inline-block">
+                            )
+                        </div>
                     </div>
                 </div>
                 <div class="bc-h6">
