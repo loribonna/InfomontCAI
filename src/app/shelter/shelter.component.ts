@@ -150,7 +150,7 @@ export class ShelterComponent implements OnInit, OnDestroy {
         } else {
             const sub = this.route.params.subscribe(params => {
                 if (params["id"]) {
-                    this.initData(params["id"]);
+                    this.initFromProperty("idCai", params["id"]);
                 } else {
                     this.to404();
                 }
