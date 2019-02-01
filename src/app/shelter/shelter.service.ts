@@ -28,7 +28,7 @@ export interface IImage {
 
 @Injectable()
 export class ShelterService {
-    private sheltersBaseUrl = "http://localhost:8000/api/shelters";
+    private sheltersBaseUrl = "https://rifugi.cai.it/api/shelters";
 
     constructor(private http: HttpClient) {}
 
