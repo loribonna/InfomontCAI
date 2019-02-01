@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "postinstall": "npm run config && npm run build:prod",
+    "postinstall": "npm run config",
     "config": "ts-node ./scripts/env-config.ts",
     "start": "node ./index.js",
     "build": "ng build",
@@ -26,6 +26,7 @@
     "@angular/router": "~7.0.0",
     "buffer": "^5.2.1",
     "core-js": "^2.5.4",
+    "dotenv": "^6.2.0",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },
